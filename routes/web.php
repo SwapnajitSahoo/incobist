@@ -15,7 +15,7 @@ Route::controller(HomeController::class)->group(function () {
 
     Route::get('/index', 'index')->name('index');
     Route::get('/industry', 'industry')->name('industry');
-    Route::get('/high_tech_industry', 'highTechIndustry')->name('high_tech_industry');
+    Route::get('/high-tech-industry', 'highTechIndustry')->name('high_tech_industry');
     Route::get('/healthcare', 'healthcare')->name('healthcare');
     Route::get('/retail', 'retail')->name('retail');
     Route::get('/travel', 'travel')->name('travel');
@@ -23,9 +23,9 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/manufacturing', 'manufacturing')->name('manufacturing');
     Route::get('/education', 'education')->name('education');
     Route::get('/logistics', 'logistics')->name('logistics');
-    Route::get('/public_sector', 'publicSector')->name('public_sector');
+    Route::get('/public-sector', 'publicSector')->name('public_sector');
     Route::get('/resources', 'resources')->name('resources');
-    Route::get('/insight_blogs', 'insightBlogs')->name('insight_blogs');
+    Route::get('/insight-blogs', 'insightBlogs')->name('insight_blogs');
     Route::get('/solution', 'solution')->name('solution');
     Route::get('/experience', 'experience')->name('experience');
     Route::get('/company', 'company')->name('company');
@@ -36,7 +36,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/booking', 'booking')->name('booking');
     Route::get('/blogs', 'blog')->name('blogs');
     Route::get('/contact', 'contact')->name('contact');
-    Route::get('/products_update', 'productsUpdate')->name('products_update');
+    Route::get('/products-update', 'productsUpdate')->name('products_update');
     Route::get('/faq', 'faq')->name('faq');
     Route::get('/media', 'media')->name('media');
 

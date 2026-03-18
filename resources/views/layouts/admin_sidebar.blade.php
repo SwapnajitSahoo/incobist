@@ -1,6 +1,6 @@
 <aside class="app-sidebar">
     <div class="app-sidebar__logo">
-        <a class="header-brand" href="index.html">
+        <a class="header-brand" href="{{ route("index") }}">
             <img src="{{ asset('asset/admin/images/brand/logo.png') }}" class="header-brand-img desktop-lgo"
                 alt="Admintro logo">
             <img src="{{ asset('asset/admin/images/brand/logo1.png') }}" class="header-brand-img dark-logo"

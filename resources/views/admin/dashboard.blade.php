@@ -8,12 +8,12 @@
                 <div class="card-header">
                     <h3 class="card-title">Top Product Sales Overview</h3>
                     <div class="card-options">
-                        <a href="index-2.html#" class="option-dots" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fe fe-more-horizontal fs-20"></i></a>
+                        <a href="#" class="option-dots" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fe fe-more-horizontal fs-20"></i></a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="index-2.html#">Today</a>
-                            <a class="dropdown-item" href="index-2.html#">Last Week</a>
-                            <a class="dropdown-item" href="index-2.html#">Last Month</a>
-                            <a class="dropdown-item" href="index-2.html#">Last Year</a>
+                            <a class="dropdown-item" href="#">Today</a>
+                            <a class="dropdown-item" href="#">Last Week</a>
+                            <a class="dropdown-item" href="#">Last Month</a>
+                            <a class="dropdown-item" href="#">Last Year</a>
                         </div>
                     </div>
                 </div>

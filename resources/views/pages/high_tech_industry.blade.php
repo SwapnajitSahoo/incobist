@@ -266,7 +266,7 @@
     </div>
     <section class="high-tech-service-card-section">
       <div class="high-tech-service-card high-tech-service-card-1">
-        <a href="ui-ux-design.html" class="industry-box-link"></a>
+        <a href="{{ route("services") }}" class="industry-box-link"></a>
         <div class="high-tech-service-image-wrapper">
           <img src="{{ asset('asset/image/bg/cloud-devops.png') }}" alt="Cloud & DevOps">
           <h3>Cloud & DevOps</h3>
@@ -274,7 +274,7 @@
         </div>
       </div>
       <div class="high-tech-service-card high-tech-service-card-2">
-        <a href="ui-ux-design.html" class="industry-box-link"></a>
+        <a href="{{ route("services") }}" class="industry-box-link"></a>
         <div class="high-tech-service-image-wrapper">
           <img src="{{ asset('asset/image/bg/ai-data-engineering.png') }}" alt="AI & Data Engineering">
           <h3>AI & Data Engineering</h3>
@@ -282,7 +282,7 @@
         </div>
       </div>
       <div class="high-tech-service-card high-tech-service-card-3">
-        <a href="ui-ux-design.html" class="industry-box-link"></a>
+        <a href="{{ route("services") }}" class="industry-box-link"></a>
         <div class="high-tech-service-image-wrapper">
           <img src="{{ asset('asset/image/bg/cyber-securyity.png') }}" alt="AI & Data Engineering">
           <h3>AI & Data Engineering</h3>
@@ -290,7 +290,7 @@
         </div>
       </div>
       <div class="high-tech-service-card high-tech-service-card-4">
-        <a href="ui-ux-design.html" class="industry-box-link"></a>
+        <a href="{{ route("services") }}" class="industry-box-link"></a>
         <div class="high-tech-service-image-wrapper">
           <img src="{{ asset('asset/image/bg/cloud.png') }}" alt="AI & Data Engineering">
           <h3>AI & Data Engineering</h3>
@@ -310,7 +310,7 @@
     </div>
     <section class="high-tech-service-card-section">
       <div class="high-tech-service-card high-tech-service-card-1">
-        <a href="ui-ux-design.html" class="industry-box-link"></a>
+        <a href="{{ route("services") }}" class="industry-box-link"></a>
         <div class="high-tech-service-image-wrapper">
           <img src="{{ asset('asset/image/bg/cloud-devops.png') }}" alt="Cloud & DevOps">
           <h3>Cognitive Business Operations</h3>
@@ -318,7 +318,7 @@
         </div>
       </div>
       <div class="high-tech-service-card high-tech-service-card-2">
-        <a href="ui-ux-design.html" class="industry-box-link"></a>
+        <a href="{{ route("services") }}" class="industry-box-link"></a>
         <div class="high-tech-service-image-wrapper">
           <img src="{{ asset('asset/image/bg/ai-data-engineering.png') }}" alt="AI & Data Engineering">
           <h3>Data and Analytics</h3>
@@ -326,7 +326,7 @@
         </div>
       </div>
       <div class="high-tech-service-card high-tech-service-card-3">
-        <a href="ui-ux-design.html" class="industry-box-link"></a>
+        <a href="{{ route("services") }}" class="industry-box-link"></a>
         <div class="high-tech-service-image-wrapper">
           <img src="{{ asset('asset/image/bg/cyber-securyity.png') }}" alt="AI & Data Engineering">
           <h3>Cybersecurity</h3>
@@ -334,7 +334,7 @@
         </div>
       </div>
       <div class="high-tech-service-card high-tech-service-card-4">
-        <a href="ui-ux-design.html" class="industry-box-link"></a>
+        <a href="{{ route("services") }}" class="industry-box-link"></a>
         <div class="high-tech-service-image-wrapper">
           <img src="{{ asset('asset/image/bg/cloud.png') }}" alt="AI & Data Engineering">
           <h3>Cloud</h3>

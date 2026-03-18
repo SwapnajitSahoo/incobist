@@ -66,11 +66,11 @@
 
       <a href="#financials" class="invester-update-info-link">Financials <span><i
             class="fa-solid fa-arrow-right"></i></span></a>
-      <a href="about.html" class="invester-update-info-link">About us <span><i
+      <a href="{{ route("about") }}" class="invester-update-info-link">About us <span><i
             class="fa-solid fa-arrow-right"></i></span></a>
-      <a href="faq.html" class="invester-update-info-link">IR FAQs <span><i
+      <a href="{{ route("faq") }}" class="invester-update-info-link">IR FAQs <span><i
             class="fa-solid fa-arrow-right"></i></span></a>
-      <a href="contact.html" class="invester-update-info-link">Contact <span><i
+      <a href="{{ route("contact") }}" class="invester-update-info-link">Contact <span><i
             class="fa-solid fa-arrow-right"></i></span></a>
     </div>
   </div>

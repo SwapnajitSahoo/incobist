@@ -140,7 +140,7 @@
 
     <section class="solution-page-service-card-section">
       <div class="solution-page-service-card solution-page-service-card-1">
-        <a href="ui-ux-design.html" class="industry-box-link"></a>
+        <a href="{{ route("services") }}" class="industry-box-link"></a>
         <div class="solution-page-service-image-wrapper">
           <img src="{{ asset('asset/image/bg/cloud-devops.png') }}" alt="Cloud & DevOps">
           <h3>Tech & Development</h3>
@@ -152,7 +152,7 @@
         </div>
       </div>
       <div class="solution-page-service-card solution-page-service-card-2">
-        <a href="ui-ux-design.html" class="industry-box-link"></a>
+        <a href="{{ route("services") }}" class="industry-box-link"></a>
         <div class="solution-page-service-image-wrapper">
           <img src="asset/image/bg/ai-data-engineering.png" alt="AI & Data Engineering">
           <h3>Growth & Marketing</h3>
@@ -164,7 +164,7 @@
         </div>
       </div>
       <div class="solution-page-service-card solution-page-service-card-3">
-        <a href="ui-ux-design.html" class="industry-box-link"></a>
+        <a href="{{ route("services") }}" class="industry-box-link"></a>
         <div class="solution-page-service-image-wrapper">
           <img src="{{ asset('asset/image/bg/cyber-securyity.png') }}" alt="AI & Data Engineering">
           <h3>Design & Experience</h3>
@@ -176,7 +176,7 @@
         </div>
       </div>
       <div class="solution-page-service-card solution-page-service-card-4">
-        <a href="ui-ux-design.html" class="industry-box-link"></a>
+        <a href="{{ route("services") }}" class="industry-box-link"></a>
         <div class="solution-page-service-image-wrapper">
           <img src="{{ asset('asset/image/bg/cloud.png') }}" alt="AI & Data Engineering">
           <h3>Strategy and Consulting</h3>
@@ -368,11 +368,11 @@
 
       <a href="#financials" class="invester-update-info-link">Financials <span><i
             class="fa-solid fa-arrow-right"></i></span></a>
-      <a href="about.html" class="invester-update-info-link">About us <span><i
+      <a href="{{ route("about") }}" class="invester-update-info-link">About us <span><i
             class="fa-solid fa-arrow-right"></i></span></a>
-      <a href="faq.html" class="invester-update-info-link">IR FAQs <span><i
+      <a href="{{ route("faq") }}" class="invester-update-info-link">IR FAQs <span><i
             class="fa-solid fa-arrow-right"></i></span></a>
-      <a href="contact.html" class="invester-update-info-link">Contact <span><i
+      <a href="{{ route("contact") }}" class="invester-update-info-link">Contact <span><i
             class="fa-solid fa-arrow-right"></i></span></a>
     </div>
   </div>

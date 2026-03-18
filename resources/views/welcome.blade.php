@@ -15,7 +15,7 @@
         <h2 class="recognition-header">Recognition &gt;</h2>
 
         <div class="recognition-box-container">
-            <a href="media.html" class="recognition-link">More Reasons to know →</a>
+            <a href="{{ route("media") }}" class="recognition-link">More Reasons to know →</a>
             <div class="recognition-box-card">
                 <div class="recognition-box-image-card">
                     <div class="image-inner-container">

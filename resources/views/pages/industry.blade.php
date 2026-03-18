@@ -1,12 +1,12 @@
 <x-guest-layout>
-    <x-slot name="title">Industry</x-slot>
-     <section class="main-industry-page-section">
+  <x-slot name="title">Industry</x-slot>
+  <section class="main-industry-page-section">
     <div class="career-heading">
       <h1>Industry Inovation</h1>
       <hr class="career-line">
       <p class="career-subtitle">Transforming Industries Through Intelligent Technology.</p>
     </div>
-   <div class="social-icons">
+    <div class="social-icons">
       <a href="https://www.linkedin.com/company/incobist/?viewAsMember=true"><i class="fab fa-linkedin-in"></i></a>
       <a href="https://www.twitter.com/incobist2001"><i class="fab fa-twitter"></i></a>
       <a href="https://www.instagram.com/incobist"><i class="fab fa-instagram"></i></a>
@@ -30,7 +30,7 @@
   <div class="industry-box-grid-container">
     <!-- Box 1 -->
     <div class="industry-box industry-box-1">
-      <a href="high_tech_industry.html" class="industry-box-link"></a>
+      <a href="{{ route('high_tech_industry') }}" class="industry-box-link"></a>
       <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-1.png);"></div>
       <div class="industry-box-triangle"></div>
       <div class="industry-box-content">
@@ -47,7 +47,7 @@
 
     <!-- Box 2 -->
     <div class="industry-box industry-box-2">
-      <a href="healthcare.html" class="industry-box-link"></a>
+      <a href="{{ route('healthcare') }}" class="industry-box-link"></a>
       <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-2.png);"></div>
       <div class="industry-box-triangle"></div>
       <div class="industry-box-content">
@@ -64,7 +64,7 @@
 
     <!-- Box 3 -->
     <div class="industry-box industry-box-3">
-      <a href="banking.html" class="industry-box-link"></a>
+      <a href="{{ route('banking') }}" class="industry-box-link"></a>
       <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-3.png);"></div>
       <div class="industry-box-triangle"></div>
       <div class="industry-box-content">
@@ -82,7 +82,7 @@
 
     <!-- Box 4 -->
     <div class="industry-box industry-box-4">
-      <a href="retail.html" class="industry-box-link"></a>
+      <a href="{{ route('retail') }}" class="industry-box-link"></a>
       <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-4.png);"></div>
       <div class="industry-box-triangle"></div>
       <div class="industry-box-content">
@@ -99,7 +99,7 @@
 
     <!-- Box 5 -->
     <div class="industry-box industry-box-5">
-      <a href="travel.html" class="industry-box-link"></a>
+      <a href="{{ route('travel') }}" class="industry-box-link"></a>
       <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-5.png);"></div>
       <div class="industry-box-triangle"></div>
       <div class="industry-box-content">
@@ -116,7 +116,7 @@
 
     <!-- Box 6 -->
     <div class="industry-box industry-box-6">
-      <a href="manufacturing.html" class="industry-box-link"></a>
+      <a href="{{ route('manufacturing') }}" class="industry-box-link"></a>
       <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-6.png);"></div>
       <div class="industry-box-triangle"></div>
       <div class="industry-box-content">
@@ -133,7 +133,7 @@
 
     <!-- Box 7 -->
     <div class="industry-box industry-box-7">
-      <a href="education.html" class="industry-box-link"></a>
+      <a href="{{ route('education') }}" class="industry-box-link"></a>
       <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-7.png);"></div>
       <div class="industry-box-triangle"></div>
       <div class="industry-box-content">
@@ -150,7 +150,7 @@
 
     <!-- Box 8 -->
     <div class="industry-box industry-box-8">
-      <a href="logistics.html" class="industry-box-link"></a>
+      <a href="{{ route('logistics') }}" class="industry-box-link"></a>
       <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-8.png);"></div>
       <div class="industry-box-triangle"></div>
       <div class="industry-box-content">
@@ -167,7 +167,7 @@
 
     <!-- Box 9 -->
     <div class="industry-box industry-box-9">
-      <a href="public-sector.html" class="industry-box-link"></a>
+      <a href="{{ route('public_sector') }}" class="industry-box-link"></a>
       <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-9.png);"></div>
       <div class="industry-box-triangle"></div>
       <div class="industry-box-content">
@@ -195,7 +195,7 @@
   </section>
   <div class="industry-capability-box-container">
     <section class="industry-capability-card-section" style="animation-duration: 60s;">
-      <a href="ui-ux-design.html" class="industry-box-link"></a>
+      <a href="{{ route('services') }}" class="industry-box-link"></a>
       <div class="industry-capability-service-card industry-capability-service-card-1">
         <div class="industry-capability-service-image-wrapper">
           <img src="{{ asset('asset/image/bg/cloud-devops.png') }}" alt="Cloud &amp; DevOps">
