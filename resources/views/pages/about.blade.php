@@ -93,70 +93,33 @@
     <div class="inclusion-cards">
       <div class="slider-track">
         <!-- Card 1 - Innovation -->
-        <div class="inclusion-card innovation-card">
-          <h3>Empowering Innovation <br> through Seamless <br> IT Solutions</h3>
-          <hr />
-          <p>At Incobist we are more than just an IT solutions provider - we are your dedicated partners in the journey
-            of
-            technological advancement and business success.</p>
-          <p>With a passion for innovation and a commitment to excellence, we strive to empower businesses of all sizes
-            to
-            thrive in the digital age.</p>
-        </div>
+        @php
+          $cardClasses = ['innovation-card', 'security-card', 'growth-card'];
+        @endphp
 
-        <!-- Card 2 - Security -->
-        <div class="inclusion-card security-card">
-          <h3>Comprehensive Security <br> & Data Protection <br> Services</h3>
+        {{-- First set of cards --}}
+        @foreach($inclusionCards as $index => $card)
+        <div class="inclusion-card {{ $cardClasses[$index % 3] }}">
+          <h3>{!! $card->title !!}</h3>
           <hr />
-          <p>Your business data is precious, and protecting it is our top priority. We implement robust security
-            measures
-            and cutting-edge protection protocols.</p>
-          <p>From cybersecurity assessments to data backup solutions, we ensure your digital layout remain safe and
-            accessible when you need them most.</p>
+          <p>{{ $card->content }}</p>
+          @if($card->second_content)
+          <p>{{ $card->second_content }}</p>
+          @endif
         </div>
+        @endforeach
 
-        <!-- Card 3 - Growth -->
-        <div class="inclusion-card growth-card">
-          <h3>Scalable Solutions <br> for Business <br> Growth</h3>
+        {{-- Duplicate Cards for seamless loop --}}
+        @foreach($inclusionCards as $index => $card)
+        <div class="inclusion-card {{ $cardClasses[$index % 3] }}">
+          <h3>{!! $card->title !!}</h3>
           <hr />
-          <p>As your business grows, your technology needs evolve. Our scalable IT infrastructure solutions adapt and
-            expand with your organization.</p>
-          <p>We provide future-ready systems that support your growth ambitions while maintaining optimal performance
-            and
-            cost-effectiveness.</p>
+          <p>{{ $card->content }}</p>
+          @if($card->second_content)
+          <p>{{ $card->second_content }}</p>
+          @endif
         </div>
-
-        <!-- Duplicate Cards for seamless loop -->
-        <div class="inclusion-card innovation-card">
-          <h3>Empowering Innovation <br> through Seamless <br> IT Solutions</h3>
-          <hr />
-          <p>At Incobist we are more than just an IT solutions provider - we are your dedicated partners in the journey
-            of
-            technological advancement and business success.</p>
-          <p>With a passion for innovation and a commitment to excellence, we strive to empower businesses of all sizes
-            to
-            thrive in the digital age.</p>
-        </div>
-
-        <div class="inclusion-card security-card">
-          <h3>Comprehensive Security <br> & Data Protection <br> Services</h3>
-          <hr />
-          <p>Your business data is precious, and protecting it is our top priority. We implement robust security
-            measures
-            and cutting-edge protection protocols.</p>
-          <p>From cybersecurity assessments to data backup solutions, we ensure your digital layout remain safe and
-            accessible when you need them most.</p>
-        </div>
-
-        <div class="inclusion-card growth-card">
-          <h3>Scalable Solutions <br> for Business <br> Growth</h3>
-          <hr />
-          <p>As your business grows, your technology needs evolve. Our scalable IT infrastructure solutions adapt and
-            expand with your organization.</p>
-          <p>We provide future-ready systems that support your growth ambitions while maintaining optimal performance
-            and
-            cost-effectiveness.</p>
-        </div>
+        @endforeach
       </div>
     </div>
   </section>

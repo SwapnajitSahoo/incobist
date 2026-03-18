@@ -80,6 +80,25 @@
                     <a href="{{ route('admin.page-contents.create') }}" class="slide-item">Add New Page</a>
                 </li>
             </ul>
+        {{-- Inclusion Cards --}}
+        <li class="slide">
+            <a class="side-menu__item" data-toggle="slide" href="#">
+                <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
+                    width="24">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z" />
+                </svg>
+                <span class="side-menu__label">Inclusion Cards</span>
+                <i class="angle fa fa-angle-right"></i>
+            </a>
+            <ul class="slide-menu">
+                <li>
+                    <a href="{{ route('admin.inclusion-cards.index') }}" class="slide-item">All Inclusion Cards</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.inclusion-cards.create') }}" class="slide-item">Add New Card</a>
+                </li>
+            </ul>
         </li>
 
         {{-- Sections (quick access) --}}

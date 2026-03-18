@@ -8,6 +8,7 @@ use App\Models\Resource;
 use App\Models\InsightBlog;
 use App\Models\Product;
 use App\Models\Faq;
+use App\Models\InclusionCard;
 
 class HomeController extends Controller
 {
@@ -111,7 +112,8 @@ class HomeController extends Controller
     }
     public function about()
     {
-        return view('pages.about');
+        $inclusionCards = InclusionCard::where('is_active', true)->orderBy('sort_order')->get();
+        return view('pages.about', compact('inclusionCards'));
     }
     public function services()
     {

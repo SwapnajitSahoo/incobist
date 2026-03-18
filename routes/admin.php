@@ -10,6 +10,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\PotentialRoiController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\InclusionCardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
@@ -88,3 +89,11 @@ Route::post('resources', [ResourceController::class, 'store'])->name('resources.
 Route::get('resources/{id}/edit', [ResourceController::class, 'edit'])->name('resources.edit');
 Route::post('resources/{id}', [ResourceController::class, 'update'])->name('resources.update');
 Route::post('resources/{id}/delete', [ResourceController::class, 'destroy'])->name('resources.delete');
+
+// Inclusion Cards
+Route::get('inclusion-cards', [InclusionCardController::class, 'index'])->name('inclusion-cards.index');
+Route::get('inclusion-cards/create', [InclusionCardController::class, 'create'])->name('inclusion-cards.create');
+Route::post('inclusion-cards/store', [InclusionCardController::class, 'store'])->name('inclusion-cards.store');
+Route::get('inclusion-cards/{id}/edit', [InclusionCardController::class, 'edit'])->name('inclusion-cards.edit');
+Route::post('inclusion-cards/{id}/update', [InclusionCardController::class, 'update'])->name('inclusion-cards.update');
+Route::post('inclusion-cards/{id}/delete', [InclusionCardController::class, 'destroy'])->name('inclusion-cards.delete');
