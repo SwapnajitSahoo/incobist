@@ -4,6 +4,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\PotentialRoiController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -50,6 +51,7 @@ Route::view('/coming-soon', 'coming-soon')->name('coming-soon');
 
 Route::post('/contact-submit', [ContactController::class, 'store'])->name('contact.submit');
 Route::post('/project-form',[ProjectController::class,'store'])->name('project.form');
+Route::post('/potential-roi-submit', [PotentialRoiController::class, 'store'])->name('potential-roi.submit');
 
 
 Route::get('/blog/{id}', [HomeController::class, 'blogSingle'])->name('blog');

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Resource;
+use App\Models\InsightBlog;
+use App\Models\Product;
+use App\Models\Faq;
 
 class HomeController extends Controller
 {
@@ -53,11 +57,14 @@ class HomeController extends Controller
     }
     public function resources()
     {
-        return view('pages.resources');
+
+        $resources = Resource::where('status', true)->orderBy('order_index')->get();
+        return view('pages.resources', compact('resources'));
     }
     public function insightBlogs()
     {
-        return view('pages.insight_blogs');
+        $blogs = InsightBlog::where('is_active', true)->get();
+        return view('pages.insight_blogs', compact('blogs'));
     }
     public function solution()
     {
@@ -71,37 +78,37 @@ class HomeController extends Controller
     {
         return view('pages.company');
     }
- public function career()
-{
-    $list = [
-        (object)[
-            'location' => 'Kolkata',
-            'date' => '05 Mar 2026',
-            'details' => 'Laravel Developer',
-            'category' => 'IT / Software',
-            'department' => 'Development',
-            'position_left' => 3
-        ],
-        (object)[
-            'location' => 'Bangalore',
-            'date' => '02 Mar 2026',
-            'details' => 'PHP Backend Developer',
-            'category' => 'IT / Software',
-            'department' => 'Backend',
-            'position_left' => 2
-        ],
-        (object)[
-            'location' => 'Remote',
-            'date' => '01 Mar 2026',
-            'details' => 'Frontend Developer',
-            'category' => 'Web Development',
-            'department' => 'Frontend',
-            'position_left' => 1
-        ]
-    ];
+    public function career()
+    {
+        $list = [
+            (object) [
+                'location' => 'Kolkata',
+                'date' => '05 Mar 2026',
+                'details' => 'Laravel Developer',
+                'category' => 'IT / Software',
+                'department' => 'Development',
+                'position_left' => 3
+            ],
+            (object) [
+                'location' => 'Bangalore',
+                'date' => '02 Mar 2026',
+                'details' => 'PHP Backend Developer',
+                'category' => 'IT / Software',
+                'department' => 'Backend',
+                'position_left' => 2
+            ],
+            (object) [
+                'location' => 'Remote',
+                'date' => '01 Mar 2026',
+                'details' => 'Frontend Developer',
+                'category' => 'Web Development',
+                'department' => 'Frontend',
+                'position_left' => 1
+            ]
+        ];
 
-    return view('pages.career', compact('list'));
-}
+        return view('pages.career', compact('list'));
+    }
     public function about()
     {
         return view('pages.about');
@@ -128,11 +135,18 @@ class HomeController extends Controller
     }
     public function productsUpdate()
     {
-        return view('pages.products_update');
+        $products = Product::where('is_active', true)->orderBy('created_at', 'desc')->get();
+        return view('pages.products_update', compact('products'));
     }
     public function faq()
     {
-        return view('pages.faq');
+        $faqs = Faq::where('is_active', true)
+            ->orderBy('faq_type', 'asc')
+            ->orderBy('created_at', 'asc')
+            ->get()
+            ->groupBy('faq_type');
+
+        return view('pages.faq', compact('faqs'));
     }
     public function media()
     {
@@ -142,16 +156,16 @@ class HomeController extends Controller
     public function privacyPolicy()
     {
         // return view('pages.privacy-policy');
-         return view('coming-soon');
+        return view('coming-soon');
     }
     public function termsConditions()
     {
         // return view('pages.terms-conditions');
-         return view('coming-soon');
+        return view('coming-soon');
     }
     public function refundPolicy()
     {
         // return view('pages.refund-policy');
-         return view('coming-soon');
+        return view('coming-soon');
     }
 }

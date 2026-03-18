@@ -9743,7 +9743,7 @@ textarea::placeholder {
   filter: brightness(100%);
 }
 
-/* .resources-box-bg {
+.resources-box-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -9751,7 +9751,7 @@ textarea::placeholder {
   height: 100%;
   background-size: cover;
   background-position: center;
-} */
+}
 
 /* Larger triangle clip path in the background */
 .resources-box::before {
@@ -9792,40 +9792,7 @@ textarea::placeholder {
   clip-path: polygon(100% 100%, 0 100%, 100% 0);
 }
 
-.resources-box-1 {
-  background: url("../image/bg/resources-perspective.png") no-repeat center
-    center;
-  background-size: cover;
-}
-.resources-box-2 {
-  background: url("../image/bg/resources-article.png") no-repeat center center;
-  background-size: cover;
-}
-.resources-box-3 {
-  background: url("../image/bg/industry-page-box-3.png") no-repeat center center;
-  background-size: cover;
-}
-.resources-box-4 {
-  background: url("../image/bg/industry-page-box-3.png") no-repeat center center;
-  background-size: cover;
-}
-.resources-box-5 {
-  background: url("../image/bg/resources-perspective-2.png") no-repeat center
-    center;
-  background-size: cover;
-}
-.resources-box-6 {
-  background: url("../image/bg/resources-article-2.png") no-repeat center center;
-  background-size: cover;
-}
-.resources-box-7 {
-  background: url("../image/bg/industry-page-box-5.png") no-repeat center center;
-  background-size: cover;
-}
-.resources-box-8 {
-  background: url("../image/bg/industry-page-box-6.png") no-repeat center center;
-  background-size: cover;
-}
+
 /* Background triangle colors (slightly different) */
 .resources-box-1::before {
   background: linear-gradient(to bottom, #dc1035, #76091d);

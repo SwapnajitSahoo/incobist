@@ -1,6 +1,6 @@
 <x-guest-layout>
-        <x-slot name="title">PRODUCTS UPDATE</x-slot>
-        
+  <x-slot name="title">PRODUCTS UPDATE</x-slot>
+
   <section class="product-hero">
     <div class="career-heading">
       <h1>Product Updates</h1>
@@ -21,40 +21,36 @@
   <!-- ============ Latest Releases SECTION START ============ -->
   <section class="latest-release">
     <hr>
-    <div class="latest-grid">
-      <div class="latest-grid-img">
-        <img src="{{ asset('asset/image/bg/smart-dashboard.png') }}" alt="">
+    @foreach($products as $index => $product)
+      <div class="latest-grid {{ $index % 2 == 1 ? 'best-release' : '' }}">
+        @if($index % 2 == 0)
+          {{-- Layout: Image Left --}}
+          <div class="latest-grid-img">
+            <img src="{{ $product->image ? asset($product->image) : asset('asset/image/bg/smart-dashboard.png') }}"
+              alt="{{ $product->name }}" style="width: 100%; height: 350px; object-fit: cover; border-radius: 8px;">
+          </div>
+          <div class="latest-heading smart-dashboard">
+            <h5>{{ $product->name }}</h5>
+            <h1>{{ $product->heading }}</h1>
+            <h6>{!! $product->content !!}</h6>
+          </div>
+        @else
+          {{-- Layout: Image Right --}}
+          <div class="latest-heading targeted-campaign">
+            <h5>{{ $product->name }}</h5>
+            <h1>{{ $product->heading }}</h1>
+            <h6>{!! $product->content !!}</h6>
+          </div>
+          <div class="latest-grid-img">
+            <img src="{{ $product->image ? asset($product->image) : asset('asset/image/bg/targeted-campaign.png') }}"
+              alt="{{ $product->name }}" style="width: 100%; height: 350px; object-fit: cover; border-radius: 8px;">
+          </div>
+        @endif
       </div>
-      <div class="latest-heading smart-dashboard">
-        <h5>Latest Releases</h5>
-        <h1>Smarter Dashboard Experience - April 2025</h1>
-        <h6>We've revamped our analytics dashboard with customizable filters, exportable reports, and improved
-          visualizations—helping you make faster, smarter decisions.</h6>
-      </div>
-    </div>
-    <hr>
-    <div class="latest-grid best-release">
-      <div class="latest-heading targeted-campaign">
-        <h5>Best Release</h5>
-        <h1>Targeted Campaign Tools - March 2025</h1>
-        <h6>Now launch more personalized email and push notification
-          campaigns directly from your CRM integration panel</h6>
-      </div>
-      <div class="latest-grid-img">
-        <img src="{{ asset('asset/image/bg/targeted-campaign.png') }}" alt="">
-      </div>
-    </div>
-    <hr>
-    <div class="latest-grid enhanced-security">
-      <div class="latest-grid-img">
-        <img src="{{ asset('asset/image/bg/enhanced-security.png') }}" alt="">
-      </div>
-      <div class="latest-heading">
-        <h5>Strong Authentication</h5>
-        <h1>Enhanced Security Layer - February 2025</h1>
-        <h6>Added Two-Factor Authentication (2FA) and login alerts to safeguard your data and team access.</h6>
-      </div>
-    </div>
+      @if(!$loop->last)
+        <hr>
+      @endif
+    @endforeach
     <hr>
   </section>
 

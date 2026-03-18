@@ -1,6 +1,6 @@
 <x-guest-layout>
-        <x-slot name="title">EXPERIENCE CENTER</x-slot>
-          <!-- =========== hero section start ========= -->
+  <x-slot name="title">EXPERIENCE CENTER</x-slot>
+  <!-- =========== hero section start ========= -->
 
   <section class="experience-center-hero">
     <div class="career-heading">
@@ -31,63 +31,66 @@
     <div class="roi-container">
       <!-- Form Panel -->
       <div class="roi-form-panel">
-        <div>
+        <form id="roiForm">
+          @csrf
           <div class="roi-form-group">
             <label>Your Industry</label>
-            <select>
+            <select name="industry" id="roi_industry" class="form-control">
               <option value="">Select Industry</option>
-              <option>Healthcare</option>
-              <option>Education</option>
-              <option>E-commerce</option>
-              <option>Real Estate</option>
-              <option>Travel & Tourism</option>
+              <option value="Healthcare">Healthcare</option>
+              <option value="Education">Education</option>
+              <option value="E-commerce">E-commerce</option>
+              <option value="Real Estate">Real Estate</option>
+              <option value="Travel & Tourism">Travel & Tourism</option>
             </select>
           </div>
           <div class="roi-form-group">
             <label>Monthly Budget</label>
-            <select>
+            <select name="budget" id="roi_budget" class="form-control">
               <option value="">Select Budget</option>
-              <option>₹10K - ₹50K</option>
-              <option>₹50K - ₹1L</option>
-              <option>₹1L - ₹5L</option>
-              <option>₹5L - ₹10L</option>
-              <option>Above ₹10L</option>
+              <option value="₹10K - ₹50K">₹10K - ₹50K</option>
+              <option value="₹50K - ₹1L">₹50K - ₹1L</option>
+              <option value="₹1L - ₹5L">₹1L - ₹5L</option>
+              <option value="₹5L - ₹10L">₹5L - ₹10L</option>
+              <option value="Above ₹10L">Above ₹10L</option>
             </select>
           </div>
           <div class="roi-form-group">
             <label>Your Goal</label>
-            <select>
+            <select name="goal" id="roi_goal" class="form-control">
               <option value="">Select Goal</option>
-              <option>Lead Generation</option>
-              <option>Brand Awareness</option>
-              <option>Sales Conversion</option>
-              <option>App Downloads</option>
-              <option>Website Traffic</option>
+              <option value="Lead Generation">Lead Generation</option>
+              <option value="Brand Awareness">Brand Awareness</option>
+              <option value="Sales Conversion">Sales Conversion</option>
+              <option value="App Downloads">App Downloads</option>
+              <option value="Website Traffic">Website Traffic</option>
             </select>
           </div>
           <div class="roi-form-group">
             <label>Business Stage</label>
-            <select>
+            <select name="business_stage" id="roi_stage" class="form-control">
               <option value="">Select Stage</option>
-              <option>Startup</option>
-              <option>Growing</option>
-              <option>Established</option>
-              <option>Enterprise</option>
+              <option value="Startup">Startup</option>
+              <option value="Growing">Growing</option>
+              <option value="Established">Established</option>
+              <option value="Enterprise">Enterprise</option>
             </select>
           </div>
           <div class="roi-form-group">
             <label>Timeline Preference</label>
-            <select>
+            <select name="timeline" id="roi_timeline" class="form-control">
               <option value="">Select Timeline</option>
-              <option>1-3 Months</option>
-              <option>3-6 Months</option>
-              <option>6-12 Months</option>
-              <option>Flexible</option>
+              <option value="1-3 Months">1-3 Months</option>
+              <option value="3-6 Months">3-6 Months</option>
+              <option value="6-12 Months">6-12 Months</option>
+              <option value="Flexible">Flexible</option>
             </select>
           </div>
-        </div>
+        </form>
         <div class="roi-footer-buttons">
-          <button class="roi-button">Calculate Now</button>
+          <button class="roi-button" type="button" id="roiSubmitBtn">
+            <span>Calculate Now<i class="fa fa-spinner fa-spin" id="roiSubmitSpin" style="display:none;"></i></span>
+          </button>
         </div>
       </div>
 
@@ -592,4 +595,56 @@
         across industries.”</h3>
     </div>
   </section>
+  @push('scripts')
+  <script>
+    $(document).ready(function() {
+        $('#roiSubmitBtn').click(function(e) {
+            e.preventDefault();
+
+            $('#roiSubmitSpin').show();
+            $('#roiSubmitBtn').prop('disabled', true);
+
+            const formData = $('#roiForm').serialize();
+
+            $.ajax({
+                url: "{{ route('potential-roi.submit') }}",
+                type: "POST",
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                success: function(response) {
+                    $('#roiSubmitSpin').hide();
+                    $('#roiSubmitBtn').prop('disabled', false);
+
+                    if (response.status) {
+                        toastr.success(response.message);
+                        $('#roiForm')[0].reset();
+                        
+                        // Smooth scroll to results
+                        const resultSection = document.querySelector('.roi-result-panel-container');
+                        if (resultSection) {
+                            resultSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    } else {
+                        toastr.error(response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $('#roiSubmitSpin').hide();
+                    $('#roiSubmitBtn').prop('disabled', false);
+
+                    if (xhr.status === 422) {
+                        $.each(xhr.responseJSON.errors, function(key, value) {
+                            toastr.error(value[0]);
+                        });
+                    } else {
+                        toastr.error("Something went wrong");
+                    }
+                }
+            });
+        });
+    });
+  </script>
+  @endpush
 </x-guest-layout>
