@@ -1,30 +1,78 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="en" dir="ltr">
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <!-- Meta data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <meta content="INCOBIST - ADMIN" name="description">
+    <meta content="INCOBIST" name="author">
+    <meta name="keywords" content="laravel admin dashboard, best laravel admin panel, laravel admin dashboard, php admin panel template, blade template in laravel, laravel dashboard template, laravel template bootstrap, laravel simple admin panel,laravel dashboard template,laravel bootstrap 4 template, best admin panel for laravel,laravel admin panel template, laravel admin dashboard template, laravel bootstrap admin template, laravel admin template bootstrap 4" />
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <!-- Title -->
+    <title>INCOBIST - Admin</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+    <!--Favicon -->
+    <link rel="icon" href="{{ asset('asset/admin/images/brand/favicon.ico') }}" type="image/x-icon" />
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
-            </div>
+    <!--Bootstrap css -->
+    <link href="{{ asset('asset/admin/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Style css -->
+    <link href="{{ asset('asset/admin/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('asset/admin/css/dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('asset/admin/css/skin-modes.css') }}" rel="stylesheet" />
+
+    <!-- Animate css -->
+    <link href="{{ asset('asset/admin/css/animated.css') }}" rel="stylesheet" />
+
+    <!---Icons css-->
+    <link href="{{ asset('asset/admin/css/icons.css') }}" rel="stylesheet" />
+
+
+    <!-- Color Skin css -->
+    <link id="theme" href="{{ asset('asset/admin/colors/color1.css') }}" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body class="h-100vh bg-primary">
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="page">
+        <div class="page-content">
+              {{ $slot }}
         </div>
-    </body>
+    </div>
+
+    <!-- Jquery js-->
+    <script src="{{ asset('asset/admin/js/jquery-3.5.1.min.js') }}"></script>
+
+    <!-- Bootstrap4 js-->
+    <script src="{{ asset('asset/admin/plugins/bootstrap/popper.min.js') }}"></script>
+    <script src="{{ asset('asset/admin/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+
+    <!--Othercharts js-->
+    <script src="{{ asset('asset/admin/plugins/othercharts/jquery.sparkline.min.js') }}"></script>
+
+    <!-- Circle-progress js-->
+    <script src="{{ asset('asset/admin/js/circle-progress.min.js') }}"></script>
+
+    <!-- Jquery-rating js-->
+    <script src="{{ asset('asset/admin/plugins/rating/jquery.rating-stars.js') }}"></script>
+    <!-- Custom js-->
+    <script src="{{ asset('asset/admin/js/custom.js') }}"></script>
+</body>
+
 </html>
