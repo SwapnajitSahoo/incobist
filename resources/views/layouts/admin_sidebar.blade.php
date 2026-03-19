@@ -227,5 +227,89 @@
                 <span class="side-menu__label">Resources</span>
             </a>
         </li>
+
+        <li class="slide">
+    <a class="side-menu__item" data-toggle="slide" href="#">
+        <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 
+                     8h14v-2H7v2zm0-4h14v-2H7v2zm0-6v2h14V7H7z"/>
+        </svg>
+        <span class="side-menu__label">Industry CMS</span>
+        <i class="angle fa fa-angle-right"></i>
+    </a>
+
+    <ul class="slide-menu">
+        <li>
+            <a href="{{ route('admin.industry.index') }}" class="slide-item">
+                All Industries
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.industry.create') }}" class="slide-item">
+                Add Industry
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="slide">
+    <a class="side-menu__item" data-toggle="slide" href="#">
+        <span class="side-menu__label">Hightech Industry</span>
+        <i class="angle fa fa-angle-right"></i>
+    </a>
+
+    <ul class="slide-menu">
+        <li>
+            <a href="{{ route('admin.hightech.index') }}" class="slide-item">
+                All Industry
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.hightech.create') }}" class="slide-item">
+                Add Industry
+            </a>
+        </li>
+    </ul>
+</li>
+<li class="slide">
+    <a class="side-menu__item" data-toggle="slide" href="#">
+        <span class="side-menu__label">Healthcare Industry</span>
+        <i class="angle fa fa-angle-right"></i>
+    </a>
+
+    <ul class="slide-menu">
+        <li>
+            <a href="{{ route('admin.healthcare.index') }}" class="slide-item">
+                All Industry
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.healthcare.create') }}" class="slide-item">
+                Add Industry
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="slide">
+    <a class="side-menu__item" data-toggle="slide" href="#">
+        <span class="side-menu__label">Banking Industry</span>
+        <i class="angle fa fa-angle-right"></i>
+    </a>
+
+    <ul class="slide-menu">
+        <li>
+            <a href="{{ route('admin.banking.index') }}" class="slide-item">
+                All Industry
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.banking.create') }}" class="slide-item">
+                Add Industry
+            </a>
+        </li>
+    </ul>
+</li>
     </ul>
 </aside>
