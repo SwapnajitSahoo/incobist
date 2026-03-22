@@ -1,186 +1,54 @@
 <x-guest-layout>
-  <x-slot name="title">Industry</x-slot>
+  <x-slot name="title">{{$getIndustry->page_title ?? 'INDUSTRY'}}</x-slot>
   <section class="main-industry-page-section">
     <div class="career-heading">
-      <h1>Industry Inovation</h1>
+      <h1>{{$getIndustry->heading ?? 'INDUSTRY'}}</h1>
       <hr class="career-line">
-      <p class="career-subtitle">Transforming Industries Through Intelligent Technology.</p>
+      <p class="career-subtitle">{{$getIndustry->heading_subtitle ?? 'INDUSTRY'}}</p>
     </div>
     <div class="social-icons">
-      <a href="https://www.linkedin.com/company/incobist/?viewAsMember=true"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://www.twitter.com/incobist2001"><i class="fab fa-twitter"></i></a>
-      <a href="https://www.instagram.com/incobist"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.facebook.com/incobist"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://wa.me/9090138408" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      <a href="tel: +91 6744618289"><i class="fas fa-phone"></i></a>
+      <a href="{{$getIndustry->linkedin_link}}"><i class="fab fa-linkedin-in"></i></a>
+      <a href="{{$getIndustry->twitter_link}}"><i class="fab fa-twitter"></i></a>
+      <a href="{{$getIndustry->instagram_link}}"><i class="fab fa-instagram"></i></a>
+      <a href="{{$getIndustry->fb_link}}"><i class="fab fa-facebook-f"></i></a>
+      <a href="{{$getIndustry->wp_link}}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="{{$getIndustry->tel_no}}"><i class="fas fa-phone"></i></a>
     </div>
     <div class="career-hero-shadow-overlay"></div>
   </section>
 
   <!-- ========================  INDUSTRY WE SERVES SECTION START ======================== -->
   <div class="lending-speed">
-    <h1>Industries We Serve</h1>
+    <h1>{{$getIndustry->lending_title ?? 'INDUSTRY'}}</h1>
     <hr class="lending-speed-line">
-    <p>At Incobist, we blend deep domain expertise with digital-first thinking to create tailored solutions for every
-      industry. From AI-driven insights to seamless product engineering, we help businesses stay ahead in a rapidly
-      evolving world.</p>
+    <p>{{$getIndustry->lending_desc ?? 'INDUSTRY'}}</p>
   </div>
 
   <!-- =================== INDUSRTY CARD SECTION START =================== -->
   <div class="industry-box-grid-container">
     <!-- Box 1 -->
+    @forelse ($getIndustry->cards->where('type', 'serve') as $card)
     <div class="industry-box industry-box-1">
-      <a href="{{ route('high_tech_industry') }}" class="industry-box-link"></a>
-      <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-1.png);"></div>
+      {{-- <a href="{{ route($card->card_link) }}" class="industry-box-link"></a> --}}
+      <a href="{{ $card->card_link}}" class="industry-box-link"></a>
+      <div class="industry-box-bg"
+        style="background-image: url('{{ asset('storage/' . $card->img) }}');">
+      </div>
       <div class="industry-box-triangle"></div>
       <div class="industry-box-content">
         <div class="industry-box-heading-container">
-          <h2 class="industry-box-heading">High Tech</h2>
-          <p>Tech leaders accelerate innovation through AI and intelligent automation.</p>
+          <h2 class="industry-box-heading">{{$card->title ?? 'INDUSTRY'}}</h2>
+          <p>{{$card->subtitle ?? 'INDUSTRY'}}</p>
         </div>
         <div class="industry-box-content-container">
-          <p class="industry-box-content">Incobist helps banks, NBFCs, and fintech startups reimagine core banking
-            systems, & ensure regulatory compliance while enhancing customer trust.</p>
+          <p class="industry-box-content">{{$card->desc ?? 'INDUSTRY'}}</p>
         </div>
       </div>
     </div>
+    @empty
+    <p>No cards found</p>
+    @endforelse
 
-    <!-- Box 2 -->
-    <div class="industry-box industry-box-2">
-      <a href="{{ route('healthcare') }}" class="industry-box-link"></a>
-      <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-2.png);"></div>
-      <div class="industry-box-triangle"></div>
-      <div class="industry-box-content">
-        <div class="industry-box-heading-container">
-          <h2 class="industry-box-heading">Healthcare</h2>
-          <p>Enhancing care with smart health platforms & analytics.</p>
-        </div>
-        <div class="industry-box-content-container">
-          <p class="industry-box-content">Incobist helps banks, NBFCs, and fintech startups reimagine core banking
-            systems, & ensure regulatory compliance while enhancing customer trust.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Box 3 -->
-    <div class="industry-box industry-box-3">
-      <a href="{{ route('banking') }}" class="industry-box-link"></a>
-      <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-3.png);"></div>
-      <div class="industry-box-triangle"></div>
-      <div class="industry-box-content">
-        <div class="industry-box-heading-container">
-          <h2 class="industry-box-heading">Banking</h2>
-          <p>Building secure, scalable fintech platforms with AI-powered risk mitigation.</p>
-        </div>
-        <div class="industry-box-content-container">
-          <p class="industry-box-content">Incobist helps banks, NBFCs, and fintech startups reimagine core banking
-            systems, & ensure regulatory compliance while enhancing customer trust.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Box 4 -->
-    <div class="industry-box industry-box-4">
-      <a href="{{ route('retail') }}" class="industry-box-link"></a>
-      <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-4.png);"></div>
-      <div class="industry-box-triangle"></div>
-      <div class="industry-box-content">
-        <div class="industry-box-heading-container">
-          <h2 class="industry-box-heading">BFSI</h2>
-          <p>Building secure, scalable fintech platforms with AI-powered risk mitigation.</p>
-        </div>
-        <div class="industry-box-content-container">
-          <p class="industry-box-content">Incobist helps banks, NBFCs, and fintech startups reimagine core banking
-            systems, & ensure regulatory compliance while enhancing customer trust.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Box 5 -->
-    <div class="industry-box industry-box-5">
-      <a href="{{ route('travel') }}" class="industry-box-link"></a>
-      <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-5.png);"></div>
-      <div class="industry-box-triangle"></div>
-      <div class="industry-box-content">
-        <div class="industry-box-heading-container">
-          <h2 class="industry-box-heading">Travel</h2>
-          <p>Tech leaders accelerate innovation through AI and intelligent automation.</p>
-        </div>
-        <div class="industry-box-content-container">
-          <p class="industry-box-content">Incobist helps banks, NBFCs, and fintech startups reimagine core banking
-            systems, & ensure regulatory compliance while enhancing customer trust.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Box 6 -->
-    <div class="industry-box industry-box-6">
-      <a href="{{ route('manufacturing') }}" class="industry-box-link"></a>
-      <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-6.png);"></div>
-      <div class="industry-box-triangle"></div>
-      <div class="industry-box-content">
-        <div class="industry-box-heading-container">
-          <h2 class="industry-box-heading">Manufacturing</h2>
-          <p>Tech leaders accelerate innovation through AI and intelligent automation.</p>
-        </div>
-        <div class="industry-box-content-container">
-          <p class="industry-box-content">Incobist helps banks, NBFCs, and fintech startups reimagine core banking
-            systems, & ensure regulatory compliance while enhancing customer trust.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Box 7 -->
-    <div class="industry-box industry-box-7">
-      <a href="{{ route('education') }}" class="industry-box-link"></a>
-      <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-7.png);"></div>
-      <div class="industry-box-triangle"></div>
-      <div class="industry-box-content">
-        <div class="industry-box-heading-container">
-          <h2 class="industry-box-heading">Education</h2>
-          <p>Tech leaders accelerate innovation through AI and intelligent automation.</p>
-        </div>
-        <div class="industry-box-content-container">
-          <p class="industry-box-content">Incobist helps banks, NBFCs, and fintech startups reimagine core banking
-            systems, & ensure regulatory compliance while enhancing customer trust.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Box 8 -->
-    <div class="industry-box industry-box-8">
-      <a href="{{ route('logistics') }}" class="industry-box-link"></a>
-      <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-8.png);"></div>
-      <div class="industry-box-triangle"></div>
-      <div class="industry-box-content">
-        <div class="industry-box-heading-container">
-          <h2 class="industry-box-heading">Logictics</h2>
-          <p>Enhancing care with smart health platforms & analytics.</p>
-        </div>
-        <div class="industry-box-content-container">
-          <p class="industry-box-content">Incobist helps banks, NBFCs, and fintech startups reimagine core banking
-            systems, & ensure regulatory compliance while enhancing customer trust.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Box 9 -->
-    <div class="industry-box industry-box-9">
-      <a href="{{ route('public_sector') }}" class="industry-box-link"></a>
-      <div class="industry-box-bg" style="background-image: url(asset/image/bg/industry-page-box-9.png);"></div>
-      <div class="industry-box-triangle"></div>
-      <div class="industry-box-content">
-        <div class="industry-box-heading-container">
-          <h2 class="industry-box-heading">Public Sector</h2>
-          <p>Building secure, scalable fintech platforms with AI-powered risk mitigation.</p>
-        </div>
-        <div class="industry-box-content-container">
-          <p class="industry-box-content">Incobist helps banks, NBFCs, and fintech startups reimagine core banking
-            systems, & ensure regulatory compliance while enhancing customer trust.</p>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- ==================== OUR CAPABILITIES SECTION START ===================== -->
@@ -194,93 +62,21 @@
     </div>
   </section>
   <div class="industry-capability-box-container">
+    @forelse ($getIndustry->cards->where('type', 'capable') as $card)
     <section class="industry-capability-card-section" style="animation-duration: 60s;">
-      <a href="{{ route('services') }}" class="industry-box-link"></a>
+      <a href="{{ $card->card_link}}" class="industry-box-link"></a>
+
       <div class="industry-capability-service-card industry-capability-service-card-1">
         <div class="industry-capability-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/cloud-devops.png') }}" alt="Cloud &amp; DevOps">
-          <h3>Cloud &amp; DevOps</h3>
-          <p>Generative AI: Address enterprise goals with synthetic data</p>
-        </div>
-      </div>
-      <div class="industry-capability-service-card industry-capability-service-card-2">
-        <div class="industry-capability-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/ai-data-engineering.png') }}" alt="AI &amp; Data Engineering">
-          <h3>AI &amp; Data Engineering</h3>
-          <p>Adopting cognitive recruitment practices to revive the world of work</p>
-        </div>
-      </div>
-      <div class="industry-capability-service-card industry-capability-service-card-3">
-        <div class="industry-capability-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/cyber-securyity.png') }}" alt="Cyber Security">
-          <h3>Cyber Security</h3>
-          <p>SAP accelerates deal closure with process automation</p>
-        </div>
-      </div>
-      <div class="industry-capability-service-card industry-capability-service-card-4">
-        <div class="industry-capability-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/cloud.png') }}" alt="Cloud Solutions">
-          <h3>Cloud Solutions</h3>
-          <p>Lexmark paves the way for future business growth</p>
-        </div>
-      </div>
-      <div class="industry-capability-service-card industry-capability-service-card-5">
-        <div class="industry-capability-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/mobile-app-web-development.png') }}" alt="Cloud Solutions">
-          <h3>Product Engineering</h3>
-          <p>Tech leaders accelerate innovation through AI and intelligent automation.</p>
-        </div>
-      </div>
-      <div class="industry-capability-service-card industry-capability-service-card-6">
-        <div class="industry-capability-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/product-engineering.png') }}" alt="Cloud Solutions">
-          <h3>Mobile & Web App Development</h3>
-          <p>Building secure, scalable fintech platforms with AI-powered risk mitigation</p>
-        </div>
-      </div>
-      <div class="industry-capability-service-card industry-capability-service-card-1">
-        <div class="industry-capability-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/cloud-devops.png') }}" alt="Cloud &amp; DevOps">
-          <h3>Cloud &amp; DevOps</h3>
-          <p>Generative AI: Address enterprise goals with synthetic data</p>
-        </div>
-      </div>
-      <div class="industry-capability-service-card industry-capability-service-card-2">
-        <div class="industry-capability-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/ai-data-engineering.png') }}" alt="AI &amp; Data Engineering">
-          <h3>AI &amp; Data Engineering</h3>
-          <p>Adopting cognitive recruitment practices to revive the world of work</p>
-        </div>
-      </div>
-      <div class="industry-capability-service-card industry-capability-service-card-3">
-        <div class="industry-capability-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/cyber-securyity.png') }}" alt="Cyber Security">
-          <h3>Cyber Security</h3>
-          <p>SAP accelerates deal closure with process automation</p>
-        </div>
-      </div>
-      <div class="industry-capability-service-card industry-capability-service-card-4">
-        <div class="industry-capability-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/cloud.png') }}" alt="Cloud Solutions">
-          <h3>Cloud Solutions</h3>
-          <p>Lexmark paves the way for future business growth</p>
-        </div>
-      </div>
-      <div class="industry-capability-service-card industry-capability-service-card-5">
-        <div class="industry-capability-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/mobile-app-web-development.png') }}" alt="Cloud Solutions">
-          <h3>Product Engineering</h3>
-          <p>Tech leaders accelerate innovation through AI and intelligent automation.</p>
-        </div>
-      </div>
-      <div class="industry-capability-service-card industry-capability-service-card-6">
-        <div class="industry-capability-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/product-engineering.png') }}" alt="Cloud Solutions">
-          <h3>Mobile & Web App Development</h3>
-          <p>Building secure, scalable fintech platforms with AI-powered risk mitigation</p>
+          <img src="{{ asset('storage/' . $card->img) }}" alt="Cloud &amp; DevOps">
+          <h3>{{$card->title ?? 'INDUSTRY'}}</h3>
+          <p>{{$card->desc ?? 'INDUSTRY'}}</p>
         </div>
       </div>
     </section>
+    @empty
+    <p>No cards found</p>
+    @endforelse
   </div>
 
   <!-- ======================== Project Idea Section Start ============================= -->

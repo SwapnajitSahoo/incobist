@@ -16,6 +16,8 @@ use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\InclusionCardController;
 use App\Http\Controllers\IndustryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IndustryCardController;
+use App\Http\Controllers\IndustryChallengeController;
 
 Route::get('/dashboard', function () {
 
@@ -33,8 +35,33 @@ Route::get('/dashboard', function () {
 
 })->name('dashboard');
 
-Route::get('/navigation-setup', [NavbarMenuController::class, 'navSetup'])->name('nav_setup');
-Route::post('/navigation-setup', [NavbarMenuController::class, 'navStore'])->name('navbar-menu-store');
+// Index – list all menu items
+Route::get('/navbar-menus', [NavbarMenuController::class, 'index'])
+    ->name('navbar-menu.index');
+ 
+// Create form
+Route::get('/navigation-setup', [NavbarMenuController::class, 'navSetup'])
+    ->name('nav_setup');
+ 
+// Store
+Route::post('/navigation-setup', [NavbarMenuController::class, 'navStore'])
+    ->name('navbar-menu-store');
+ 
+// Edit form
+Route::get('/navbar-menus/{navbarMenu}/edit', [NavbarMenuController::class, 'edit'])
+    ->name('navbar-menu.edit');
+ 
+// Update
+Route::put('/navbar-menus/{navbarMenu}', [NavbarMenuController::class, 'update'])
+    ->name('navbar-menu.update');
+ 
+// Toggle active/inactive
+Route::patch('/navbar-menus/{navbarMenu}/toggle', [NavbarMenuController::class, 'toggleActive'])
+    ->name('navbar-menu.toggle');
+ 
+// Delete
+Route::delete('/navbar-menus/{navbarMenu}', [NavbarMenuController::class, 'destroy'])
+    ->name('navbar-menu.destroy');
 
 // Page Contents
 Route::get('page-contents', [PageContentController::class, 'index'])->name('page-contents.index');
@@ -102,43 +129,33 @@ Route::get('inclusion-cards/{id}/edit', [InclusionCardController::class, 'edit']
 Route::post('inclusion-cards/{id}/update', [InclusionCardController::class, 'update'])->name('inclusion-cards.update');
 Route::post('inclusion-cards/{id}/delete', [InclusionCardController::class, 'destroy'])->name('inclusion-cards.delete');
 
-// Industry Cards
-Route::get('industry', [IndustryController::class, 'index'])->name('industry.index');
-Route::get('industry/create', [IndustryController::class, 'create'])->name('industry.create');
-Route::post('industry/store', [IndustryController::class, 'store'])->name('industry.store');
 
-Route::get('industry/{id}/edit', [IndustryController::class, 'edit'])->name('industry.edit');
-Route::post('industry/{id}/update', [IndustryController::class, 'update'])->name('industry.update');
-
-Route::post('industry/{id}/delete', [IndustryController::class, 'destroy'])->name('industry.delete');
-
-// Hightech Cards
-Route::get('hightech-industry', [HightechIndustryController::class, 'index'])->name('hightech.index');
-Route::get('hightech-industry/create', [HightechIndustryController::class, 'create'])->name('hightech.create');
-Route::post('hightech-industry/store', [HightechIndustryController::class, 'store'])->name('hightech.store');
-
-Route::get('hightech-industry/{id}/edit', [HightechIndustryController::class, 'edit'])->name('hightech.edit');
-Route::post('hightech-industry/{id}/update', [HightechIndustryController::class, 'update'])->name('hightech.update');
-
-Route::post('hightech-industry/{id}/delete', [HightechIndustryController::class, 'destroy'])->name('hightech.delete');
-
-// Healthcare Cards
-Route::get('healthcare-industry', [HealthcareIndustryController::class, 'index'])->name('healthcare.index');
-Route::get('healthcare-industry/create', [HealthcareIndustryController::class, 'create'])->name('healthcare.create');
-Route::post('healthcare-industry/store', [HealthcareIndustryController::class, 'store'])->name('healthcare.store');
-
-Route::get('healthcare-industry/{id}/edit', [HealthcareIndustryController::class, 'edit'])->name('healthcare.edit');
-Route::post('healthcare-industry/{id}/update', [HealthcareIndustryController::class, 'update'])->name('healthcare.update');
-
-Route::post('healthcare-industry/{id}/delete', [HealthcareIndustryController::class, 'destroy'])->name('healthcare.delete');
-
-
-// Banking Cards
-Route::get('banking-industry', [BankingController::class, 'index'])->name('banking.index');
-Route::get('banking-industry/create', [BankingController::class, 'create'])->name('banking.create');
-Route::post('banking-industry/store', [BankingController::class, 'store'])->name('banking.store');
-
-Route::get('banking-industry/{id}/edit', [BankingController::class, 'edit'])->name('banking.edit');
-Route::post('banking-industry/{id}/update', [BankingController::class, 'update'])->name('banking.update');
-
-Route::post('banking-industry/{id}/delete', [BankingController::class, 'destroy'])->name('banking.delete');
+// ── Industry ─────────────────────────────────────────────────
+Route::prefix('industry')->name('industry.')->group(function () {
+    Route::get('/',               [IndustryController::class, 'index'])->name('index');
+    Route::get('/create',         [IndustryController::class, 'create'])->name('create');
+    Route::post('/store',         [IndustryController::class, 'store'])->name('store');
+    Route::get('/{id}/edit',      [IndustryController::class, 'edit'])->name('edit');
+    Route::post('/{id}/update',   [IndustryController::class, 'update'])->name('update');
+    Route::get('/{id}/delete',    [IndustryController::class, 'destroy'])->name('destroy');
+});
+ 
+// ── Industry Cards ────────────────────────────────────────────
+Route::prefix('industry/{industry_id}/cards')->name('industry.cards.')->group(function () {
+    Route::get('/',               [IndustryCardController::class, 'index'])->name('index');
+    Route::get('/create',         [IndustryCardController::class, 'create'])->name('create');
+    Route::post('/store',         [IndustryCardController::class, 'store'])->name('store');
+    Route::get('/{id}/edit',      [IndustryCardController::class, 'edit'])->name('edit');
+    Route::post('/{id}/update',   [IndustryCardController::class, 'update'])->name('update');
+    Route::get('/{id}/delete',    [IndustryCardController::class, 'destroy'])->name('destroy');
+});
+ 
+// ── Industry Card Challenges ──────────────────────────────────
+Route::prefix('industry/{industry_id}/challenges')->name('industry.challenges.')->group(function () {
+    Route::get('/',               [IndustryChallengeController::class, 'index'])->name('index');
+    Route::get('/create',         [IndustryChallengeController::class, 'create'])->name('create');
+    Route::post('/store',         [IndustryChallengeController::class, 'store'])->name('store');
+    Route::get('/{id}/edit',      [IndustryChallengeController::class, 'edit'])->name('edit');
+    Route::post('/{id}/update',   [IndustryChallengeController::class, 'update'])->name('update');
+    Route::get('/{id}/delete',    [IndustryChallengeController::class, 'destroy'])->name('destroy');
+});

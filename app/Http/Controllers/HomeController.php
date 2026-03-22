@@ -9,6 +9,8 @@ use App\Models\InsightBlog;
 use App\Models\Product;
 use App\Models\Faq;
 use App\Models\InclusionCard;
+use App\Models\IncoIndustry;
+use App\Helpers\helpers;
 
 class HomeController extends Controller
 {
@@ -18,43 +20,75 @@ class HomeController extends Controller
     }
     public function industry()
     {
-        return view('pages.industry');
+        $menuId = getMenuId();
+        $getIndustry = IncoIndustry::with(['cards' => function ($query) {
+            $query->whereIn('type', ['serve', 'capable']);
+        }])->where('nav_menu_id', $menuId)->first();
+
+        return view('pages.industry', compact('getIndustry'));
     }
     public function highTechIndustry()
     {
-        return view('pages.high_tech_industry');
+        $menuId = getMenuId();
+        $getIndustry = IncoIndustry::with('cards', 'challenges')->where('nav_menu_id', $menuId)->first();
+        if (!$getIndustry)  return view('coming-soon');
+        return view('pages.high_tech_industry', compact('getIndustry'));
     }
     public function healthcare()
     {
-        return view('pages.healthcare');
+        $menuId = getMenuId();
+        $getIndustry = IncoIndustry::with('cards', 'challenges')->where('nav_menu_id', $menuId)->first();
+        if (!$getIndustry)  return view('coming-soon');
+        return view('pages.healthcare', compact('getIndustry'));
     }
     public function retail()
     {
-        return view('pages.retail');
+        $menuId = getMenuId();
+        $getIndustry = IncoIndustry::with('cards', 'challenges')->where('nav_menu_id', $menuId)->first();
+        if (!$getIndustry)  return view('coming-soon');
+        return view('pages.retail', compact('getIndustry'));
     }
     public function travel()
     {
-        return view('pages.travel');
+        $menuId = getMenuId();
+        $getIndustry = IncoIndustry::with('cards', 'challenges')->where('nav_menu_id', $menuId)->first();
+        if (!$getIndustry)  return view('coming-soon');
+        return view('pages.travel', compact('getIndustry'));
     }
     public function banking()
     {
-        return view('pages.banking');
+        $menuId = getMenuId();
+        $getIndustry = IncoIndustry::with('cards', 'challenges')->where('nav_menu_id', $menuId)->first();
+        if (!$getIndustry)  return view('coming-soon');
+        return view('pages.banking', compact('getIndustry'));
     }
     public function manufacturing()
     {
-        return view('pages.manufacturing');
+        $menuId = getMenuId();
+        $getIndustry = IncoIndustry::with('cards', 'challenges')->where('nav_menu_id', $menuId)->first();
+        if (!$getIndustry)  return view('coming-soon');
+        return view('pages.manufacturing', compact('getIndustry'));
     }
     public function education()
     {
-        return view('pages.education');
+        $menuId = getMenuId();
+        $getIndustry = IncoIndustry::with('cards', 'challenges')->where('nav_menu_id', $menuId)->first();
+        if (!$getIndustry)  return view('coming-soon');
+        return view('pages.education', compact('getIndustry'));
     }
     public function logistics()
     {
-        return view('pages.logistics');
+        $menuId = getMenuId();
+        $getIndustry = IncoIndustry::with('cards', 'challenges')->where('nav_menu_id', $menuId)->first();
+        if (!$getIndustry)  return view('coming-soon');
+        return view('pages.logistics', compact('getIndustry'));
     }
     public function publicSector()
     {
-        return view('pages.public_sector');
+        $menuId = getMenuId();
+        $getIndustry = IncoIndustry::with('cards', 'challenges')->where('nav_menu_id', $menuId)->first();
+        if (!$getIndustry)  return view('coming-soon');
+        return view('pages.public_sector', compact('getIndustry'));
     }
     public function resources()
     {

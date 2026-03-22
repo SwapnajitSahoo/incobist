@@ -18,7 +18,7 @@ class NavbarMenu extends Model
     ];
     public function children()
     {
-        return $this->hasMany(NavbarMenu::class, 'parent_id')->orderBy('menu_order');
+        return $this->hasMany(NavbarMenu::class, 'parent_id')->where('is_active', 1)->orderBy('menu_order');
     }
 
     public function parent()

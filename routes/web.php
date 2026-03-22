@@ -45,12 +45,11 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/terms-conditions', 'termsConditions')->name('terms-conditions');
     Route::get('/refund-policy', 'refundPolicy')->name('refund-policy');
 
-Route::view('/coming-soon', 'coming-soon')->name('coming-soon');
-
+    Route::view('/coming-soon', 'coming-soon')->name('coming-soon');
 });
 
 Route::post('/contact-submit', [ContactController::class, 'store'])->name('contact.submit');
-Route::post('/project-form',[ProjectController::class,'store'])->name('project.form');
+Route::post('/project-form', [ProjectController::class, 'store'])->name('project.form');
 Route::post('/potential-roi-submit', [PotentialRoiController::class, 'store'])->name('potential-roi.submit');
 
 
@@ -67,4 +66,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
