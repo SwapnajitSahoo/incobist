@@ -32,50 +32,6 @@
       <h2>Staying ahead of the curve isn't always easy. <br>We can help. YOUR CHALLENGE</h2>
       <hr class="high-tech-line">
     </div>
-    <!-- <section class="our-solution-section">
-      <div class="solution-left">
-        <div class="solution-item active">
-          <div class="solution-bar"></div>
-          <span class="solution-number solution-purple">01.</span>
-          <p>Creating compelling customer experiences</p>
-        </div>
-        <hr class="solution-line">
-        <div class="solution-item">
-          <span class="solution-number solution-green">02.</span>
-          <p>Addressing the semiconductor chip shortage</p>
-        </div>
-        <hr class="solution-line">
-        <div class="solution-item">
-          <span class="solution-number solution-red">03.</span>
-          <p>Improving market base through cloud coverage</p>
-        </div>
-        <hr class="solution-line">
-        <div class="solution-item">
-          <span class="solution-number solution-blue">04.</span>
-          <p>Building a cyber-resilient organization</p>
-        </div>
-        <hr class="solution-line">
-        <div class="solution-item">
-          <span class="solution-number solution-orange">05.</span>
-          <p>Building a cyber-resilient organization</p>
-        </div>
-        <hr class="solution-line">
-      </div>
-
-      <div class="solution-right">
-        <div class="solution-content">
-          <h2 class="solution-purple">Our Solution</h2>
-          <h4>Customer Experience Transformation Services</h4>
-        </div>
-        <img src="{{ asset('asset/image/bg/our-solution-customer-experience.png') }}" alt="Touch Interaction" />
-        <div class="solution-caption">
-          <p>
-            A range of services including CX strategy design, customer insights,
-            and marketing transformation
-          </p>
-        </div>
-      </div>
-    </section> -->
     <div class="solv-container">
 
       <section class="solv-section">
@@ -83,28 +39,28 @@
         <!-- Left column with solution items -->
         <div class="solv-left-column">
           @foreach($getIndustry->challenges as $challenge)
-          <div class="solv-item" onclick="solvShowSolution({{  $loop->iteration }})">
-            <div class="solv-bar solv-purple-bg"></div>
-            <span class="solv-number solv-purple">{{ $loop->iteration }}.</span>
-            <p class="solv-item-text">{{ $challenge->solution_name }}</p>
-            <div class="solv-arrow solv-purple">
-              <div class="solv-arrow-icon"></div>
+            <div class="solv-item" onclick="solvShowSolution({{  $loop->iteration }})">
+              <div class="solv-bar solv-purple-bg"></div>
+              <span class="solv-number solv-purple">{{ $loop->iteration }}.</span>
+              <p class="solv-item-text">{{ $challenge->solution_name }}</p>
+              <div class="solv-arrow solv-purple">
+                <div class="solv-arrow-icon"></div>
+              </div>
             </div>
-          </div>
 
-          <!-- Mobile Content -->
-          <div class="solv-mobile-content" id="solv-mobile-content-{{  $loop->iteration }}">
-            <div class="solv-content-header">
-              <h2 class="solv-purple">{{ $challenge->title }}</h2>
-              <h4>{{ $challenge->subtitle }}</h4>
+            <!-- Mobile Content -->
+            <div class="solv-mobile-content" id="solv-mobile-content-{{  $loop->iteration }}">
+              <div class="solv-content-header">
+                <h2 class="solv-purple">{{ $challenge->title }}</h2>
+                <h4>{{ $challenge->subtitle }}</h4>
+              </div>
+              <img src="{{ asset('storage/' . $challenge->img) }}" alt="">
+              <div class="solv-content-caption">
+                <p>{{ $challenge->desc }}</p>
+              </div>
             </div>
-            <img src="{{ asset('storage/' . $challenge->img) }}" alt="">
-            <div class="solv-content-caption">
-              <p>{{ $challenge->desc }}</p>
-            </div>
-          </div>
 
-          <hr class="solv-divider">
+            <hr class="solv-divider">
           @endforeach
 
         </div>
@@ -114,20 +70,20 @@
         <div class="solv-right-column">
           <div class="solv-content-wrapper">
             @foreach($getIndustry->challenges as $challenge)
-            <div class="solv-content-box {{ $loop->first ? 'solv-active' : '' }}"
-              id="solv-content-{{  $loop->iteration }}">
+              <div class="solv-content-box {{ $loop->first ? 'solv-active' : '' }}"
+                id="solv-content-{{  $loop->iteration }}">
 
-              <div class="solv-content-header">
-                <h2 class="solv-blue">{{ $challenge->title }}</h2>
-                <h4>{{ $challenge->subtitle }}</h4>
+                <div class="solv-content-header">
+                  <h2 class="solv-blue">{{ $challenge->title }}</h2>
+                  <h4>{{ $challenge->subtitle }}</h4>
+                </div>
+
+                <img src="{{ asset('storage/' . $challenge->img) }}" alt="">
+
+                <div class="solv-content-caption">
+                  <p>{{ $challenge->desc }}</p>
+                </div>
               </div>
-
-              <img src="{{ asset('storage/' . $challenge->img) }}" alt="">
-
-              <div class="solv-content-caption">
-                <p>{{ $challenge->desc }}</p>
-              </div>
-            </div>
             @endforeach
           </div>
         </div>
@@ -144,20 +100,39 @@
       <h5>Whether you're a startup or an enterprise, Incobist delivers domain-aligned tech solutions to fuel your next
         leap.</h5>
     </div>
-    <section class="high-tech-service-card-section">
-      @forelse ($getIndustry->cards->where('type', 'focus') as $card)
-      <div class="high-tech-service-card high-tech-service-card-1">
-        <a href="{{ $card->card_link}}" class="industry-box-link"></a>
-        <div class="high-tech-service-image-wrapper">
-          <img src="{{ asset('storage/' . $card->img) }}" alt="Cloud & DevOps">
-          <h3>{{$card->title ?? 'INDUSTRY'}}</h3>
-          <p>{{$card->desc ?? 'INDUSTRY'}}</p>
-        </div>
-      </div>
-      @empty
-      <p>No cards found</p>
-      @endforelse
-    </section>
+    @php $focusCards = $getIndustry->cards->where('type', 'focus'); @endphp
+    <div class="high-tech-carousel-container {{ $focusCards->count() > 4 ? 'auto-slide' : '' }}">
+      <section class="high-tech-service-card-section">
+        @forelse ($focusCards as $card)
+          <div class="high-tech-service-card high-tech-service-card-{{ ($loop->index % 4) + 1 }}">
+            <a href="{{ $card->card_link}}" class="industry-box-link"></a>
+            <div class="high-tech-service-image-wrapper">
+              <img src="{{ $card->img ? asset('storage/' . $card->img) : asset('asset/image/bg/cloud-devops.png') }}"
+                alt="{{ $card->title ?? 'INDUSTRY' }}">
+              <h3>{{$card->title ?? 'INDUSTRY'}}</h3>
+              <p>{{$card->desc ?? 'INDUSTRY'}}</p>
+            </div>
+          </div>
+        @empty
+          <p>No cards found</p>
+        @endforelse
+
+        {{-- Duplicate cards for infinite loop if more than 4 --}}
+        @if($focusCards->count() > 4)
+          @foreach ($focusCards as $card)
+            <div class="high-tech-service-card high-tech-service-card-{{ ($loop->index % 4) + 1 }}">
+              <a href="{{ $card->card_link}}" class="industry-box-link"></a>
+              <div class="high-tech-service-image-wrapper">
+                <img src="{{ $card->img ? asset('storage/' . $card->img) : asset('asset/image/bg/cloud-devops.png') }}"
+                  alt="{{ $card->title ?? 'INDUSTRY' }}">
+                <h3>{{$card->title ?? 'INDUSTRY'}}</h3>
+                <p>{{$card->desc ?? 'INDUSTRY'}}</p>
+              </div>
+            </div>
+          @endforeach
+        @endif
+      </section>
+    </div>
   </section>
 
 
@@ -168,20 +143,39 @@
       <h5>Whether you're a startup or an enterprise, Incobist delivers domain-aligned tech solutions to fuel your next
         leap.</h5>
     </div>
-    <section class="high-tech-service-card-section">
-      @forelse ($getIndustry->cards->where('type', 'service') as $card)
-      <div class="high-tech-service-card high-tech-service-card-1">
-        <a href="{{ $card->card_link}}" class="industry-box-link"></a>
-        <div class="high-tech-service-image-wrapper">
-          <img src="{{ asset('storage/' . $card->img) }}" alt="Cloud & DevOps">
-          <h3>{{$card->title ?? 'INDUSTRY'}}</h3>
-          <p>{{$card->desc ?? 'INDUSTRY'}}</p>
-        </div>
-      </div>
-      @empty
-      <p>No cards found</p>
-      @endforelse
-    </section>
+    @php $serviceCards = $getIndustry->cards->where('type', 'service'); @endphp
+    <div class="high-tech-carousel-container {{ $serviceCards->count() > 4 ? 'auto-slide' : '' }}">
+      <section class="high-tech-service-card-section">
+        @forelse ($serviceCards as $card)
+          <div class="high-tech-service-card high-tech-service-card-{{ ($loop->index % 4) + 1 }}">
+            <a href="{{ $card->card_link}}" class="industry-box-link"></a>
+            <div class="high-tech-service-image-wrapper">
+              <img src="{{ $card->img ? asset('storage/' . $card->img) : asset('asset/image/bg/cloud-devops.png') }}"
+                alt="{{ $card->title ?? 'INDUSTRY' }}">
+              <h3>{{$card->title ?? 'INDUSTRY'}}</h3>
+              <p>{{$card->desc ?? 'INDUSTRY'}}</p>
+            </div>
+          </div>
+        @empty
+          <p>No cards found</p>
+        @endforelse
+
+        {{-- Duplicate cards for infinite loop if more than 4 --}}
+        @if($serviceCards->count() > 4)
+          @foreach ($serviceCards as $card)
+            <div class="high-tech-service-card high-tech-service-card-{{ ($loop->index % 4) + 1 }}">
+              <a href="{{ $card->card_link}}" class="industry-box-link"></a>
+              <div class="high-tech-service-image-wrapper">
+                <img src="{{ $card->img ? asset('storage/' . $card->img) : asset('asset/image/bg/cloud-devops.png') }}"
+                  alt="{{ $card->title ?? 'INDUSTRY' }}">
+                <h3>{{$card->title ?? 'INDUSTRY'}}</h3>
+                <p>{{$card->desc ?? 'INDUSTRY'}}</p>
+              </div>
+            </div>
+          @endforeach
+        @endif
+      </section>
+    </div>
   </section>
 
   <section class="in-focus">
@@ -192,5 +186,5 @@
         are set to be a vital partner in realizing our vision of a streamlined and agile IT environment.</h1>
     </div>
   </section>
- 
+
 </x-guest-layout>

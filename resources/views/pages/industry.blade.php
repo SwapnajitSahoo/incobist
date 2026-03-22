@@ -28,25 +28,24 @@
   <div class="industry-box-grid-container">
     <!-- Box 1 -->
     @forelse ($getIndustry->cards->where('type', 'serve') as $card)
-    <div class="industry-box industry-box-1">
-      {{-- <a href="{{ route($card->card_link) }}" class="industry-box-link"></a> --}}
-      <a href="{{ $card->card_link}}" class="industry-box-link"></a>
-      <div class="industry-box-bg"
-        style="background-image: url('{{ asset('storage/' . $card->img) }}');">
-      </div>
-      <div class="industry-box-triangle"></div>
-      <div class="industry-box-content">
-        <div class="industry-box-heading-container">
-          <h2 class="industry-box-heading">{{$card->title ?? 'INDUSTRY'}}</h2>
-          <p>{{$card->subtitle ?? 'INDUSTRY'}}</p>
+      <div class="industry-box industry-box-1">
+        {{-- <a href="{{ route($card->card_link) }}" class="industry-box-link"></a> --}}
+        <a href="{{ $card->card_link}}" class="industry-box-link"></a>
+        <div class="industry-box-bg" style="background-image: url('{{ asset('storage/' . $card->img) }}');">
         </div>
-        <div class="industry-box-content-container">
-          <p class="industry-box-content">{{$card->desc ?? 'INDUSTRY'}}</p>
+        <div class="industry-box-triangle"></div>
+        <div class="industry-box-content">
+          <div class="industry-box-heading-container">
+            <h2 class="industry-box-heading">{{$card->title ?? 'INDUSTRY'}}</h2>
+            <p>{{$card->subtitle ?? 'INDUSTRY'}}</p>
+          </div>
+          <div class="industry-box-content-container">
+            <p class="industry-box-content">{{$card->desc ?? 'INDUSTRY'}}</p>
+          </div>
         </div>
       </div>
-    </div>
     @empty
-    <p>No cards found</p>
+      <p>No cards found</p>
     @endforelse
 
   </div>
@@ -63,19 +62,19 @@
   </section>
   <div class="industry-capability-box-container">
     @forelse ($getIndustry->cards->where('type', 'capable') as $card)
-    <section class="industry-capability-card-section" style="animation-duration: 60s;">
-      <a href="{{ $card->card_link}}" class="industry-box-link"></a>
+      <section class="industry-capability-card-section" style="animation-duration: 60s;">
+        <a href="{{ $card->card_link}}" class="industry-box-link"></a>
 
-      <div class="industry-capability-service-card industry-capability-service-card-1">
-        <div class="industry-capability-service-image-wrapper">
-          <img src="{{ asset('storage/' . $card->img) }}" alt="Cloud &amp; DevOps">
-          <h3>{{$card->title ?? 'INDUSTRY'}}</h3>
-          <p>{{$card->desc ?? 'INDUSTRY'}}</p>
+        <div class="industry-capability-service-card industry-capability-service-card-1">
+          <div class="industry-capability-service-image-wrapper">
+            <img src="{{ asset('storage/' . $card->img) }}" alt="Cloud &amp; DevOps">
+            <h3>{{$card->title ?? 'INDUSTRY'}}</h3>
+            <p>{{$card->desc ?? 'INDUSTRY'}}</p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     @empty
-    <p>No cards found</p>
+      <p>No cards found</p>
     @endforelse
   </div>
 
