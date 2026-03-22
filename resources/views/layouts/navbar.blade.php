@@ -10,24 +10,7 @@
                 </div>
             </li>
             <hr class="nav-hr-line" />
-            <!-- <li>
-                <div class="nav-logo-dropdown">
-                    <a href="{{route('industry')}}">Industry</a>
-                    <span class="dropdown-toggle"><i class="fas fa-caret-down"></i></span>
-                </div>
-                <ul class="submenu">
-                    <hr class="nav-hr-line-2" />
-                    <li><a href="{{route('high_tech_industry')}}">High Tech</a></li>
-                    <li><a href="{{route('healthcare')}}">Healthcare</a></li>
-                    <li><a href="{{route('banking')}}">Banking</a></li>
-                    <li><a href="{{route('retail')}}">Retail</a></li>
-                    <li><a href="{{route('travel')}}">Travel</a></li>
-                    <li><a href="{{route('manufacturing')}}">Manufacturing</a></li>
-                    <li><a href="{{route('education')}}">Education</a></li>
-                    <li><a href="{{route('logistics')}}">Logistics</a></li>
-                    <li><a href="{{route('public_sector')}}">Public Sector</a></li>
-                </ul>
-            </li> -->
+            
             <li>
                 <div class="nav-logo-dropdown">
                     <a href="{{ route($industryMenu->slug) }}">
@@ -43,7 +26,7 @@
 
                     @foreach ($industryMenu->children as $child)
                         <li>
-                            <a href="{{ route($child->slug) }}">
+                            <a href="{{ route('industry.details', $child->slug) }}">
                                 {{ $child->title }}
                             </a>
                         </li>

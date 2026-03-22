@@ -15,15 +15,8 @@ Route::controller(HomeController::class)->group(function () {
 
     Route::get('/index', 'index')->name('index');
     Route::get('/industry', 'industry')->name('industry');
-    Route::get('/high-tech-industry', 'highTechIndustry')->name('high_tech_industry');
-    Route::get('/healthcare', 'healthcare')->name('healthcare');
-    Route::get('/retail', 'retail')->name('retail');
-    Route::get('/travel', 'travel')->name('travel');
-    Route::get('/banking', 'banking')->name('banking');
-    Route::get('/manufacturing', 'manufacturing')->name('manufacturing');
-    Route::get('/education', 'education')->name('education');
-    Route::get('/logistics', 'logistics')->name('logistics');
-    Route::get('/public-sector', 'publicSector')->name('public_sector');
+    Route::get('/industry/{slug}', 'industryDetails')->name('industry.details');
+ 
     Route::get('/resources', 'resources')->name('resources');
     Route::get('/insight-blogs', 'insightBlogs')->name('insight_blogs');
     Route::get('/solution', 'solution')->name('solution');
@@ -47,6 +40,9 @@ Route::controller(HomeController::class)->group(function () {
 
     Route::view('/coming-soon', 'coming-soon')->name('coming-soon');
 });
+
+
+
 
 Route::post('/contact-submit', [ContactController::class, 'store'])->name('contact.submit');
 Route::post('/project-form', [ProjectController::class, 'store'])->name('project.form');
