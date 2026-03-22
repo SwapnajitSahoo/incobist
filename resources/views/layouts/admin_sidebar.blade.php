@@ -42,26 +42,35 @@
         <li class="side-item side-item-category">CMS</li>
 
         {{-- Navbar --}}
-        <li class="slide">
-            <a class="side-menu__item" data-toggle="slide" href="#">
-                <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
-                    width="24">
+        <li class="slide {{ request()->routeIs('admin.nav_setup', 'admin.navbar-menu.*') ? 'is-expanded' : '' }}">
+            <a class="side-menu__item {{ request()->routeIs('admin.nav_setup', 'admin.navbar-menu.*') ? 'active' : '' }}"
+                data-toggle="slide" href="#">
+                <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
                     <path d="M0 0h24v24H0V0z" fill="none" />
-                    <path
-                        d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16zm0-11.47L17.74 9 12 13.47 6.26 9 12 4.53z" />
+                    <path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12
+                     16zm0-11.47L17.74 9 12 13.47 6.26 9 12 4.53z" />
                 </svg>
                 <span class="side-menu__label">Navbar</span>
                 <i class="angle fa fa-angle-right"></i>
             </a>
             <ul class="slide-menu">
                 <li>
-                    <a href="{{ route('admin.nav_setup') }}" class="slide-item">Navigation Setup</a>
+                    <a href="{{ route('admin.navbar-menu.index') }}"
+                        class="slide-item {{ request()->routeIs('admin.navbar-menu.index') ? 'active' : '' }}">
+                        <i class="fa fa-list me-2"></i> All Menu Items
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.nav_setup') }}"
+                        class="slide-item {{ request()->routeIs('admin.nav_setup') ? 'active' : '' }}">
+                        <i class="fa fa-plus me-2"></i> Add Menu Item
+                    </a>
                 </li>
             </ul>
         </li>
 
         {{-- Pages --}}
-        <li class="slide">
+        <!-- <li class="slide">
             <a class="side-menu__item" data-toggle="slide" href="#">
                 <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
                     width="24">
@@ -79,8 +88,8 @@
                 <li>
                     <a href="{{ route('admin.page-contents.create') }}" class="slide-item">Add New Page</a>
                 </li>
-            </ul>
-        {{-- Inclusion Cards --}}
+            </ul> -->
+            {{-- Inclusion Cards --}}
         <li class="slide">
             <a class="side-menu__item" data-toggle="slide" href="#">
                 <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
@@ -102,7 +111,7 @@
         </li>
 
         {{-- Sections (quick access) --}}
-        <li class="slide">
+        <!-- <li class="slide">
             <a class="side-menu__item" data-toggle="slide" href="#">
                 <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
                     width="24">
@@ -114,23 +123,23 @@
             </a>
             <ul class="slide-menu">
                 @php
-                    $sidebarPages = \App\Models\PageContent::with('menu')
-                        ->where('is_published', 1)
-                        ->latest()
-                        ->take(5)
-                        ->get();
-                 @endphp
+                $sidebarPages = \App\Models\PageContent::with('menu')
+                ->where('is_published', 1)
+                ->latest()
+                ->take(5)
+                ->get();
+                @endphp
                 @forelse($sidebarPages as $sPage)
-                    <li>
-                        <a href="{{ route('admin.page-contents.edit', $sPage->id) }}" class="slide-item">
-                            {{ $sPage->page_title }}
-                        </a>
-                    </li>
+                <li>
+                    <a href="{{ route('admin.page-contents.edit', $sPage->id) }}" class="slide-item">
+                        {{ $sPage->page_title }}
+                    </a>
+                </li>
                 @empty
-                    <li><span class="slide-item text-muted">No pages yet</span></li>
+                <li><span class="slide-item text-muted">No pages yet</span></li>
                 @endforelse
             </ul>
-        </li>
+        </li> -->
 
         {{-- Insight Blogs --}}
         <li class="slide">
@@ -229,87 +238,30 @@
         </li>
 
         <li class="slide">
-    <a class="side-menu__item" data-toggle="slide" href="#">
-        <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 
-                     8h14v-2H7v2zm0-4h14v-2H7v2zm0-6v2h14V7H7z"/>
-        </svg>
-        <span class="side-menu__label">Industry CMS</span>
-        <i class="angle fa fa-angle-right"></i>
-    </a>
+            <a class="side-menu__item" data-toggle="slide" href="#">
+                <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 
+                     8h14v-2H7v2zm0-4h14v-2H7v2zm0-6v2h14V7H7z" />
+                </svg>
+                <span class="side-menu__label">Industry CMS</span>
+                <i class="angle fa fa-angle-right"></i>
+            </a>
 
-    <ul class="slide-menu">
-        <li>
-            <a href="{{ route('admin.industry.index') }}" class="slide-item">
-                All Industries
-            </a>
+            <ul class="slide-menu">
+                <li>
+                    <a href="{{ route('admin.industry.index') }}" class="slide-item">
+                        All Industries
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.industry.create') }}" class="slide-item">
+                        Add Industry
+                    </a>
+                </li>
+            </ul>
         </li>
-        <li>
-            <a href="{{ route('admin.industry.create') }}" class="slide-item">
-                Add Industry
-            </a>
-        </li>
-    </ul>
-</li>
 
-<li class="slide">
-    <a class="side-menu__item" data-toggle="slide" href="#">
-        <span class="side-menu__label">Hightech Industry</span>
-        <i class="angle fa fa-angle-right"></i>
-    </a>
 
-    <ul class="slide-menu">
-        <li>
-            <a href="{{ route('admin.hightech.index') }}" class="slide-item">
-                All Industry
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('admin.hightech.create') }}" class="slide-item">
-                Add Industry
-            </a>
-        </li>
-    </ul>
-</li>
-<li class="slide">
-    <a class="side-menu__item" data-toggle="slide" href="#">
-        <span class="side-menu__label">Healthcare Industry</span>
-        <i class="angle fa fa-angle-right"></i>
-    </a>
-
-    <ul class="slide-menu">
-        <li>
-            <a href="{{ route('admin.healthcare.index') }}" class="slide-item">
-                All Industry
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('admin.healthcare.create') }}" class="slide-item">
-                Add Industry
-            </a>
-        </li>
-    </ul>
-</li>
-
-<li class="slide">
-    <a class="side-menu__item" data-toggle="slide" href="#">
-        <span class="side-menu__label">Banking Industry</span>
-        <i class="angle fa fa-angle-right"></i>
-    </a>
-
-    <ul class="slide-menu">
-        <li>
-            <a href="{{ route('admin.banking.index') }}" class="slide-item">
-                All Industry
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('admin.banking.create') }}" class="slide-item">
-                Add Industry
-            </a>
-        </li>
-    </ul>
-</li>
     </ul>
 </aside>

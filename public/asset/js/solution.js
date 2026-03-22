@@ -9,6 +9,7 @@ const colorClasses = [
 
 // Show solution content based on item click
 function solvShowSolution(num) {
+ 
   // Hide all solution content items (both desktop and mobile)
   document.querySelectorAll(".solv-content-box").forEach((item) => {
     item.classList.remove("solv-active");

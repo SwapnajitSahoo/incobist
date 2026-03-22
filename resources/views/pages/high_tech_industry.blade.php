@@ -1,30 +1,27 @@
 <x-guest-layout>
-  <x-slot name="title">HIGH TECH INDUSTRY</x-slot>
+  <x-slot name="title">{{$getIndustry->page_title ?? 'Hightech'}}</x-slot>
   <section class="high-tech-hero" style>
     <div class="career-heading">
-      <h1>High-tech industries</h1>
+      <h1>{{$getIndustry->heading ?? 'Hightech'}}</h1>
       <hr class="career-line">
-      <p class="career-subtitle">We co-create futuristic technologies and transformative experiences for a better
-        world.</p>
+      <p class="career-subtitle">{{$getIndustry->heading_subtitle ?? 'Hightech'}}</p>
     </div>
     <div class="social-icons">
-      <a href="https://www.linkedin.com/company/incobist/?viewAsMember=true"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://www.twitter.com/incobist2001"><i class="fab fa-twitter"></i></a>
-      <a href="https://www.instagram.com/incobist"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.facebook.com/incobist"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://wa.me/9090138408" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      <a href="tel: +91 6744618289"><i class="fas fa-phone"></i></a>
+      <a href="{{$getIndustry->linkedin_link}}"><i class="fab fa-linkedin-in"></i></a>
+      <a href="{{$getIndustry->twitter_link}}"><i class="fab fa-twitter"></i></a>
+      <a href="{{$getIndustry->instagram_link}}"><i class="fab fa-instagram"></i></a>
+      <a href="{{$getIndustry->fb_link}}"><i class="fab fa-facebook-f"></i></a>
+      <a href="{{$getIndustry->wp_link}}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="{{$getIndustry->tel_no}}"><i class="fas fa-phone"></i></a>
     </div>
     <div class="career-hero-shadow-overlay"></div>
   </section>
 
   <!-- ============ Lending Speed SECTION START ============ -->
   <div class="lending-speed">
-    <h1>Lending speed to strategy</h1>
+    <h1>{{$getIndustry->lending_title ?? 'INDUSTRY'}}</h1>
     <hr class="lending-speed-line">
-    <p>At Incobist, we blend deep domain expertise with digital-first thinking to create tailored solutions for every
-      industry. From AI-driven insights to seamless product engineering, we help businesses stay ahead in a rapidly
-      evolving world.</p>
+    <p>{{$getIndustry->lending_desc ?? 'INDUSTRY'}}</p>
   </div>
 
 
@@ -80,175 +77,58 @@
       </div>
     </section> -->
     <div class="solv-container">
+
       <section class="solv-section">
+
         <!-- Left column with solution items -->
         <div class="solv-left-column">
-          <div class="solv-item" onclick="solvShowSolution(1)">
+          @foreach($getIndustry->challenges as $challenge)
+          <div class="solv-item" onclick="solvShowSolution({{  $loop->iteration }})">
             <div class="solv-bar solv-purple-bg"></div>
-            <span class="solv-number solv-purple">01.</span>
-            <p class="solv-item-text">Creating compelling customer experiences</p>
+            <span class="solv-number solv-purple">{{ $loop->iteration }}.</span>
+            <p class="solv-item-text">{{ $challenge->solution_name }}</p>
             <div class="solv-arrow solv-purple">
               <div class="solv-arrow-icon"></div>
             </div>
           </div>
-          <!-- Mobile Content 1 -->
-          <div class="solv-mobile-content" id="solv-mobile-content-1">
-            <div class="solv-content-header">
-              <h2 class="solv-purple">Our Solution</h2>
-              <h4>Customer Experience Transformation Services</h4>
-            </div>
-            <img src="{{ asset('asset/image/bg/our-solution-customer-experience.png') }}" alt="Touch Interaction">
-            <div class="solv-content-caption">
-              <p>A range of services including CX strategy design, customer insights, and marketing transformation</p>
-            </div>
-          </div>
-          <hr class="solv-divider">
 
-          <div class="solv-item" onclick="solvShowSolution(2)">
-            <div class="solv-bar solv-green-bg"></div>
-            <span class="solv-number solv-green">02.</span>
-            <p class="solv-item-text">Addressing the semiconductor chip shortage</p>
-            <div class="solv-arrow solv-green">
-              <div class="solv-arrow-icon"></div>
-            </div>
-          </div>
-          <div class="solv-mobile-content" id="solv-mobile-content-2">
+          <!-- Mobile Content -->
+          <div class="solv-mobile-content" id="solv-mobile-content-{{  $loop->iteration }}">
             <div class="solv-content-header">
-              <h2 class="solv-green">Our Solution</h2>
-              <h4>Semiconductor Supply Chain Optimization</h4>
+              <h2 class="solv-purple">{{ $challenge->title }}</h2>
+              <h4>{{ $challenge->subtitle }}</h4>
             </div>
-            <img src="{{ asset('asset/image/bg/solution2.png') }}" alt="Chip Manufacturing">
+            <img src="{{ asset('storage/' . $challenge->img) }}" alt="">
             <div class="solv-content-caption">
-              <p>Strategic approaches to mitigate chip shortages through supply chain resilience and alternative
-                sourcing</p>
+              <p>{{ $challenge->desc }}</p>
             </div>
           </div>
-          <hr class="solv-divider">
 
-          <div class="solv-item" onclick="solvShowSolution(3)">
-            <div class="solv-bar solv-red-bg"></div>
-            <span class="solv-number solv-red">03.</span>
-            <p class="solv-item-text">Improving market base through cloud coverage</p>
-            <div class="solv-arrow solv-red">
-              <div class="solv-arrow-icon"></div>
-            </div>
-          </div>
-          <div class="solv-mobile-content" id="solv-mobile-content-3">
-            <div class="solv-content-header">
-              <h2 class="solv-red">Our Solution</h2>
-              <h4>Cloud Market Expansion Services</h4>
-            </div>
-            <img src="{{ asset('asset/image/bg/solution3.png') }}" alt="Cloud Computing">
-            <div class="solv-content-caption">
-              <p>Comprehensive cloud strategies to expand market reach and improve operational efficiency</p>
-            </div>
-          </div>
           <hr class="solv-divider">
+          @endforeach
 
-          <div class="solv-item solv-active" onclick="solvShowSolution(4)">
-            <div class="solv-bar solv-blue-bg"></div>
-            <span class="solv-number solv-blue">04.</span>
-            <p class="solv-item-text solv-blue">Building a cyber-resilient organization</p>
-            <div class="solv-arrow solv-blue">
-              <div class="solv-arrow-icon"></div>
-            </div>
-          </div>
-          <div class="solv-mobile-content solv-active" id="solv-mobile-content-4">
-            <div class="solv-content-header">
-              <h2 class="solv-blue">Our Solution</h2>
-              <h4>Cybersecurity Resilience Framework</h4>
-            </div>
-            <img src="{{ asset('asset/image/bg/solution4.png') }}" alt="Cyber Security">
-            <div class="solv-content-caption">
-              <p>End-to-end security solutions to protect critical layout and ensure business continuity</p>
-            </div>
-          </div>
-          <hr class="solv-divider">
-
-          <div class="solv-item" onclick="solvShowSolution(5)">
-            <div class="solv-bar solv-orange-bg"></div>
-            <span class="solv-number solv-orange">05.</span>
-            <p class="solv-item-text">Enhancing digital transformation strategies</p>
-            <div class="solv-arrow solv-orange">
-              <div class="solv-arrow-icon"></div>
-            </div>
-          </div>
-          <div class="solv-mobile-content" id="solv-mobile-content-5">
-            <div class="solv-content-header">
-              <h2 class="solv-orange">Our Solution</h2>
-              <h4>Digital Transformation Acceleration</h4>
-            </div>
-            <img src="{{ asset('asset/image/bg/solution5.png') }}" alt="Digital Transformation">
-            <div class="solv-content-caption">
-              <p>Strategic roadmaps and implementation services to accelerate digital transformation initiatives</p>
-            </div>
-          </div>
-          <hr class="solv-divider">
         </div>
 
         <!-- Right column with desktop content -->
+
         <div class="solv-right-column">
           <div class="solv-content-wrapper">
-            <!-- Solution 1 -->
-            <div class="solv-content-box" id="solv-content-1">
-              <div class="solv-content-header">
-                <h2 class="solv-purple">Our Solution</h2>
-                <h4>Customer Experience Transformation Services</h4>
-              </div>
-              <img src="{{ asset('asset/image/bg/our-solution-customer-experience.png') }}" alt="Touch Interaction">
-              <div class="solv-content-caption">
-                <p>A range of services including CX strategy design, customer insights, and marketing transformation</p>
-              </div>
-            </div>
+            @foreach($getIndustry->challenges as $challenge)
+            <div class="solv-content-box {{ $loop->first ? 'solv-active' : '' }}"
+              id="solv-content-{{  $loop->iteration }}">
 
-            <!-- Solution 2 -->
-            <div class="solv-content-box" id="solv-content-2">
               <div class="solv-content-header">
-                <h2 class="solv-green">Our Solution</h2>
-                <h4>Semiconductor Supply Chain Optimization</h4>
+                <h2 class="solv-blue">{{ $challenge->title }}</h2>
+                <h4>{{ $challenge->subtitle }}</h4>
               </div>
-              <img src="{{ asset('asset/image/bg/solution2.png') }}" alt="Chip Manufacturing">
-              <div class="solv-content-caption">
-                <p>Strategic approaches to mitigate chip shortages through supply chain resilience and alternative
-                  sourcing</p>
-              </div>
-            </div>
 
-            <!-- Solution 3 -->
-            <div class="solv-content-box" id="solv-content-3">
-              <div class="solv-content-header">
-                <h2 class="solv-red">Our Solution</h2>
-                <h4>Cloud Market Expansion Services</h4>
-              </div>
-              <img src="{{ asset('asset/image/bg/solution3.png') }}" alt="Cloud Computing">
-              <div class="solv-content-caption">
-                <p>Comprehensive cloud strategies to expand market reach and improve operational efficiency</p>
-              </div>
-            </div>
+              <img src="{{ asset('storage/' . $challenge->img) }}" alt="">
 
-            <!-- Solution 4 -->
-            <div class="solv-content-box solv-active" id="solv-content-4">
-              <div class="solv-content-header">
-                <h2 class="solv-blue">Our Solution</h2>
-                <h4>Cybersecurity Resilience Framework</h4>
-              </div>
-              <img src="{{ asset('asset/image/bg/solution4.png') }}" alt="Cyber Security">
               <div class="solv-content-caption">
-                <p>End-to-end security solutions to protect critical layout and ensure business continuity</p>
+                <p>{{ $challenge->desc }}</p>
               </div>
             </div>
-
-            <!-- Solution 5 -->
-            <div class="solv-content-box" id="solv-content-5">
-              <div class="solv-content-header">
-                <h2 class="solv-orange">Our Solution</h2>
-                <h4>Digital Transformation Acceleration</h4>
-              </div>
-              <img src="{{ asset('asset/image/bg/solution5.png') }}" alt="Digital Transformation">
-              <div class="solv-content-caption">
-                <p>Strategic roadmaps and implementation services to accelerate digital transformation initiatives</p>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </section>
@@ -265,38 +145,18 @@
         leap.</h5>
     </div>
     <section class="high-tech-service-card-section">
+      @forelse ($getIndustry->cards->where('type', 'focus') as $card)
       <div class="high-tech-service-card high-tech-service-card-1">
-        <a href="{{ route("services") }}" class="industry-box-link"></a>
+        <a href="{{ $card->card_link}}" class="industry-box-link"></a>
         <div class="high-tech-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/cloud-devops.png') }}" alt="Cloud & DevOps">
-          <h3>Cloud & DevOps</h3>
-          <p>Generative AI: Address enterprise goals with synthetic data</p>
+          <img src="{{ asset('storage/' . $card->img) }}" alt="Cloud & DevOps">
+          <h3>{{$card->title ?? 'INDUSTRY'}}</h3>
+          <p>{{$card->desc ?? 'INDUSTRY'}}</p>
         </div>
       </div>
-      <div class="high-tech-service-card high-tech-service-card-2">
-        <a href="{{ route("services") }}" class="industry-box-link"></a>
-        <div class="high-tech-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/ai-data-engineering.png') }}" alt="AI & Data Engineering">
-          <h3>AI & Data Engineering</h3>
-          <p>Adopting cognitive recruitment practices to revive the world of work</p>
-        </div>
-      </div>
-      <div class="high-tech-service-card high-tech-service-card-3">
-        <a href="{{ route("services") }}" class="industry-box-link"></a>
-        <div class="high-tech-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/cyber-securyity.png') }}" alt="AI & Data Engineering">
-          <h3>AI & Data Engineering</h3>
-          <p>SAP accelerates deal closure with process automation</p>
-        </div>
-      </div>
-      <div class="high-tech-service-card high-tech-service-card-4">
-        <a href="{{ route("services") }}" class="industry-box-link"></a>
-        <div class="high-tech-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/cloud.png') }}" alt="AI & Data Engineering">
-          <h3>AI & Data Engineering</h3>
-          <p>Lexmark paves the way for future business growth</p>
-        </div>
-      </div>
+      @empty
+      <p>No cards found</p>
+      @endforelse
     </section>
   </section>
 
@@ -309,38 +169,18 @@
         leap.</h5>
     </div>
     <section class="high-tech-service-card-section">
+      @forelse ($getIndustry->cards->where('type', 'service') as $card)
       <div class="high-tech-service-card high-tech-service-card-1">
-        <a href="{{ route("services") }}" class="industry-box-link"></a>
+        <a href="{{ $card->card_link}}" class="industry-box-link"></a>
         <div class="high-tech-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/cloud-devops.png') }}" alt="Cloud & DevOps">
-          <h3>Cognitive Business Operations</h3>
-          <p>Generative AI: Address enterprise goals with synthetic data</p>
+          <img src="{{ asset('storage/' . $card->img) }}" alt="Cloud & DevOps">
+          <h3>{{$card->title ?? 'INDUSTRY'}}</h3>
+          <p>{{$card->desc ?? 'INDUSTRY'}}</p>
         </div>
       </div>
-      <div class="high-tech-service-card high-tech-service-card-2">
-        <a href="{{ route("services") }}" class="industry-box-link"></a>
-        <div class="high-tech-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/ai-data-engineering.png') }}" alt="AI & Data Engineering">
-          <h3>Data and Analytics</h3>
-          <p>Adopting cognitive recruitment practices to revive the world of work</p>
-        </div>
-      </div>
-      <div class="high-tech-service-card high-tech-service-card-3">
-        <a href="{{ route("services") }}" class="industry-box-link"></a>
-        <div class="high-tech-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/cyber-securyity.png') }}" alt="AI & Data Engineering">
-          <h3>Cybersecurity</h3>
-          <p>SAP accelerates deal closure with process automation</p>
-        </div>
-      </div>
-      <div class="high-tech-service-card high-tech-service-card-4">
-        <a href="{{ route("services") }}" class="industry-box-link"></a>
-        <div class="high-tech-service-image-wrapper">
-          <img src="{{ asset('asset/image/bg/cloud.png') }}" alt="AI & Data Engineering">
-          <h3>Cloud</h3>
-          <p>Lexmark paves the way for future business growth</p>
-        </div>
-      </div>
+      @empty
+      <p>No cards found</p>
+      @endforelse
     </section>
   </section>
 
@@ -352,4 +192,5 @@
         are set to be a vital partner in realizing our vision of a streamlined and agile IT environment.</h1>
     </div>
   </section>
+ 
 </x-guest-layout>
