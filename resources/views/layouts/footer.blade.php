@@ -32,21 +32,22 @@
 
             <!-- Industry Links -->
             <div class="footer-section footer-links-section">
-                <h4 class="footer-section-heading">
-                    <a href="{{route('industry')}}" style="color: #00baae;">Industry</a>
-                </h4>
-                <ul class="footer-links-list">
-                    <li><a href="{{route('high_tech_industry')}}" class="footer-link-item">High Tech</a></li>
-                    <li><a href="{{route('healthcare')}}" class="footer-link-item">Healthcare</a></li>
-                    <li><a href="{{route('banking')}}" class="footer-link-item">Banking</a></li>
-                    <li><a href="{{route('retail')}}" class="footer-link-item">Retail</a></li>
-                    <li><a href="{{route('travel')}}" class="footer-link-item">Travel</a></li>
-                    <li><a href="{{route('manufacturing')}}" class="footer-link-item">Manufacturing</a></li>
-                    <li><a href="{{route('education')}}" class="footer-link-item">Education</a></li>
-                    <li><a href="{{route('logistics')}}" class="footer-link-item">Logistics</a></li>
-                    <li><a href="{{route('public_sector')}}" class="footer-link-item">Public Sector</a></li>
-                </ul>
-            </div>
+                    <h4 class="footer-section-heading">
+                        <a href="{{ route($industryMenu->slug) }}" style="color: #00baae;">
+                            {{ $industryMenu->title }}
+                        </a>
+                    </h4>
+
+                    <ul class="footer-links-list">
+                        @foreach ($industryMenu->children as $child)
+                            <li>
+                                <a href="{{ route('industry.details', $child->slug) }}" class="footer-link-item">
+                                    {{ $child->title }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
 
             <!-- Resources Links -->
             <div class="footer-section footer-courses-section">

@@ -32,7 +32,7 @@ class ViewServiceProvider extends ServiceProvider
 
         //     $view->with('menus', $menus);
         // });
-        View::composer('layouts.navbar', function ($view) {
+        View::composer(['layouts.navbar', 'layouts.footer'], function ($view) {
 
             $industryMenu = NavbarMenu::where('slug', 'industry')
                 ->where('is_active', 1)
