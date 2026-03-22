@@ -9568,7 +9568,8 @@ textarea::placeholder {
   padding: 60px 0;
   font-family: "Exo 2", sans-serif;
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .achievement-subtitle {
@@ -9591,41 +9592,54 @@ textarea::placeholder {
 .achievement-cards {
   margin-top: 40px;
   display: flex;
-  gap: 20px;
-  max-width: 1200px;
-  justify-content: center;
-  align-items: center;
+  gap: 24px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
 .achievement-card {
-  width: 253px;
-  height: 194px;
+  flex: 1;
+  min-width: 200px;
   background: linear-gradient(to bottom, #010d0c42, #08898144);
-  padding: 30px 20px;
-  border-radius: 7px;
+  padding: 40px 24px;
+  border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s ease;
 }
 
 .achievement-number {
-  font-size: 60px;
+  font-size: 64px;
+  line-height: 1;
   margin: 0;
-  /* text-align: left; */
   font-weight: 700;
+  color: #00baae;
+}
+
+.achievement-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(0, 186, 174, 0.3);
+  background: linear-gradient(to bottom, #010d0c60, #08898160);
 }
 
 .achievement-label {
-  font-size: 20px;
-  margin: 10px 0 4px;
-  font-weight: 600;
+  font-size: 18px;
+  margin: 12px 0 6px;
+  font-weight: 500;
   color: #ffffff;
-  line-height: 20px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .achievement-note {
   font-size: 12px;
   font-family: inter;
   font-weight: 400;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.7);
   line-height: 20px;
 }
 
@@ -9750,7 +9764,7 @@ textarea::placeholder {
 }
 
 .inclusion-header {
-  margin: 0 auto 100px;
+  margin: 0 auto 60px;
   text-align: center;
 }
 
