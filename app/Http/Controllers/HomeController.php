@@ -12,6 +12,7 @@ use App\Models\InclusionCard;
 use App\Models\IncoIndustry;
 use App\Helpers\helpers;
 use App\Models\NavbarMenu;
+use App\Models\Career;
 
 class HomeController extends Controller
 {
@@ -63,36 +64,28 @@ class HomeController extends Controller
     {
         return view('pages.company');
     }
-    public function career()
+    public function career(Request $request)
     {
-        $list = [
-            (object) [
-                'location' => 'Kolkata',
-                'date' => '05 Mar 2026',
-                'details' => 'Laravel Developer',
-                'category' => 'IT / Software',
-                'department' => 'Development',
-                'position_left' => 3
-            ],
-            (object) [
-                'location' => 'Bangalore',
-                'date' => '02 Mar 2026',
-                'details' => 'PHP Backend Developer',
-                'category' => 'IT / Software',
-                'department' => 'Backend',
-                'position_left' => 2
-            ],
-            (object) [
-                'location' => 'Remote',
-                'date' => '01 Mar 2026',
-                'details' => 'Frontend Developer',
-                'category' => 'Web Development',
-                'department' => 'Frontend',
-                'position_left' => 1
-            ]
-        ];
+        $query = Career::where('status', true);
 
-        return view('pages.career', compact('list'));
+        if ($request->filled('location')) {
+            $query->where('location', $request->location);
+        }
+        if ($request->filled('category')) {
+            $query->where('category', $request->category);
+        }
+        if ($request->filled('title')) {
+            $query->where('title', $request->title);
+        }
+
+        $list = $query->latest()->get();
+        
+        // Fetch unique values for filters (always from all active jobs to show available options)
+        $locations = Career::where('status', true)->distinct()->pluck('location');
+        $categories = Career::where('status', true)->distinct()->pluck('category');
+        $titles = Career::where('status', true)->distinct()->pluck('title');
+
+        return view('pages.career', compact('list', 'locations', 'categories', 'titles'));
     }
     public function about()
     {

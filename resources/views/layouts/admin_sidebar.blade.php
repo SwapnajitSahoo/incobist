@@ -45,7 +45,8 @@
         <li class="slide {{ request()->routeIs('admin.nav_setup', 'admin.navbar-menu.*') ? 'is-expanded' : '' }}">
             <a class="side-menu__item {{ request()->routeIs('admin.nav_setup', 'admin.navbar-menu.*') ? 'active' : '' }}"
                 data-toggle="slide" href="#">
-                <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
+                    width="24">
                     <path d="M0 0h24v24H0V0z" fill="none" />
                     <path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12
                      16zm0-11.47L17.74 9 12 13.47 6.26 9 12 4.53z" />
@@ -89,13 +90,14 @@
                     <a href="{{ route('admin.page-contents.create') }}" class="slide-item">Add New Page</a>
                 </li>
             </ul> -->
-            {{-- Inclusion Cards --}}
+        {{-- Inclusion Cards --}}
         <li class="slide">
             <a class="side-menu__item" data-toggle="slide" href="#">
                 <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
                     width="24">
                     <path d="M0 0h24v24H0V0z" fill="none" />
-                    <path d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z" />
+                    <path
+                        d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z" />
                 </svg>
                 <span class="side-menu__label">Inclusion Cards</span>
                 <i class="angle fa fa-angle-right"></i>
@@ -190,7 +192,8 @@
                 <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
                     width="24">
                     <path d="M0 0h24v24H0V0z" fill="none" />
-                    <path d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z" />
+                    <path
+                        d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z" />
                 </svg>
                 <span class="side-menu__label">FAQs</span>
                 <i class="angle fa fa-angle-right"></i>
@@ -210,7 +213,8 @@
                 <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
                     width="24">
                     <path d="M0 0h24v24H0V0z" fill="none" />
-                    <path d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2 0v8.51c2 .15 3.89 1.1 5.13 2.49l.71-.71C17.43 10.85 15.31 9.3 13 9.04V2zm0 18v-7.04c2.31-.26 4.43-1.81 5.84-3.25l.71.71c-1.24 1.39-3.13 2.34-5.13 2.49V22c5.07-.5 9-4.79 9-10s-3.93-9.5-9-10v.04z" />
+                    <path
+                        d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2 0v8.51c2 .15 3.89 1.1 5.13 2.49l.71-.71C17.43 10.85 15.31 9.3 13 9.04V2zm0 18v-7.04c2.31-.26 4.43-1.81 5.84-3.25l.71.71c-1.24 1.39-3.13 2.34-5.13 2.49V22c5.07-.5 9-4.79 9-10s-3.93-9.5-9-10v.04z" />
                 </svg>
                 <span class="side-menu__label">Potential ROI</span>
             </a>
@@ -221,7 +225,8 @@
                 <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
                     width="24">
                     <path d="M0 0h24v24H0V0z" fill="none" />
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    <path
+                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                 </svg>
                 <span class="side-menu__label">Contact Inquiries</span>
             </a>
@@ -231,15 +236,43 @@
             <a class="side-menu__item" href="{{ route('admin.resources.index') }}">
                 <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="1 1 24 24"
                     width="24">
-                    <path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z" />
+                    <path
+                        d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z" />
                 </svg>
                 <span class="side-menu__label">Resources</span>
             </a>
         </li>
 
+        {{-- Careers --}}
+        <li class="slide">
+            <a class="side-menu__item" href="{{ route('admin.careers.index') }}">
+                <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
+                    width="24">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path
+                        d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zM10 4h4v2h-4V4zm10 15H4V8h16v11z" />
+                </svg>
+                <span class="side-menu__label">Careers</span>
+            </a>
+        </li>
+
+        {{-- Job Applications --}}
+        <li class="slide">
+            <a class="side-menu__item" href="{{ route('admin.job-applications.index') }}">
+                <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
+                    width="24">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+                </svg>
+                <span class="side-menu__label">Job Applications</span>
+            </a>
+        </li>
+
         <li class="slide">
             <a class="side-menu__item" data-toggle="slide" href="#">
-                <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
+                    width="24">
                     <path d="M0 0h24v24H0z" fill="none" />
                     <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 
                      8h14v-2H7v2zm0-4h14v-2H7v2zm0-6v2h14V7H7z" />

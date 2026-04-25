@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PotentialRoiController;
+use App\Http\Controllers\JobApplicationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,7 +17,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/index', 'index')->name('index');
     Route::get('/industry', 'industry')->name('industry');
     Route::get('/industry/{slug}', 'industryDetails')->name('industry.details');
- 
+
     Route::get('/resources', 'resources')->name('resources');
     Route::get('/insight-blogs', 'insightBlogs')->name('insight_blogs');
     Route::get('/solution', 'solution')->name('solution');
@@ -47,6 +48,7 @@ Route::controller(HomeController::class)->group(function () {
 Route::post('/contact-submit', [ContactController::class, 'store'])->name('contact.submit');
 Route::post('/project-form', [ProjectController::class, 'store'])->name('project.form');
 Route::post('/potential-roi-submit', [PotentialRoiController::class, 'store'])->name('potential-roi.submit');
+Route::post('/job-apply', [JobApplicationController::class, 'store'])->name('job.apply');
 
 
 Route::get('/blog/{id}', [HomeController::class, 'blogSingle'])->name('blog');

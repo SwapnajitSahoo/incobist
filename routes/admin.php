@@ -13,6 +13,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HealthcareIndustryController;
 use App\Http\Controllers\HightechIndustryController;
 use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\CareerController;
+use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\InclusionCardController;
 use App\Http\Controllers\IndustryController;
 use Illuminate\Support\Facades\Route;
@@ -120,6 +122,19 @@ Route::post('resources', [ResourceController::class, 'store'])->name('resources.
 Route::get('resources/{id}/edit', [ResourceController::class, 'edit'])->name('resources.edit');
 Route::post('resources/{id}', [ResourceController::class, 'update'])->name('resources.update');
 Route::post('resources/{id}/delete', [ResourceController::class, 'destroy'])->name('resources.delete');
+
+// Careers
+Route::get('careers', [CareerController::class, 'index'])->name('careers.index');
+Route::get('careers/create', [CareerController::class, 'create'])->name('careers.create');
+Route::post('careers/store', [CareerController::class, 'store'])->name('careers.store');
+Route::get('careers/{id}/edit', [CareerController::class, 'edit'])->name('careers.edit');
+Route::post('careers/{id}/update', [CareerController::class, 'update'])->name('careers.update');
+Route::post('careers/{id}/delete', [CareerController::class, 'destroy'])->name('careers.delete');
+
+// Job Applications
+Route::get('job-applications', [JobApplicationController::class, 'index'])->name('job-applications.index');
+Route::post('job-applications/{id}/update-status', [JobApplicationController::class, 'updateStatus'])->name('job-applications.update-status');
+Route::post('job-applications/{id}/delete', [JobApplicationController::class, 'destroy'])->name('job-applications.delete');
 
 // Inclusion Cards
 Route::get('inclusion-cards', [InclusionCardController::class, 'index'])->name('inclusion-cards.index');
