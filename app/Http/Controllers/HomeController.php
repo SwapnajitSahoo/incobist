@@ -87,6 +87,19 @@ class HomeController extends Controller
 
         return view('pages.career', compact('list', 'locations', 'categories', 'titles'));
     }
+
+    public function careerDetails($id)
+    {
+        $job = Career::findOrFail($id);
+        return view('pages.career_details', compact('job'));
+    }
+
+    public function careerApply($id)
+    {
+        $job = Career::findOrFail($id);
+        return view('pages.apply_job', compact('job'));
+    }
+
     public function about()
     {
         $inclusionCards = InclusionCard::where('is_active', true)->orderBy('sort_order')->get();

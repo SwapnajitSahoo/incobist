@@ -5,7 +5,7 @@
   <!-- =========== hero section start ========= -->
   <section class="contact-hero">
     <div class="career-heading">
-      <h1>CONTACT US</h1>
+      <h1 style="color: #00F2E2; font-size: 54px; font-weight: 400; margin-bottom: 20px; line-height: 1.2;">CONTACT US</h1>
       <hr class="career-line">
       <p class="career-subtitle">At Incobist we are more than just an IT solutions provider - we are your dedicated
         partners in the journey of technological advancement and business success</p>
@@ -65,7 +65,7 @@
     <div class="contact-us-container">
 
       <div class="contact-left">
-        <h1>CONTACT US</h1>
+        <h1 style="color: #00F2E2; font-size: 54px; font-weight: 400; margin-bottom: 20px; line-height: 1.2;">CONTACT US</h1>
         <p>
           At Incobist we are more than just an IT solutions provider - we are your dedicated partners in the journey of
           technological advancement and business success
@@ -91,10 +91,8 @@
             <input type="text" id="phone" name="mobile" placeholder="213138848293" required="" />
           </div>
 
-          <button type="submit" data-animation="fadeInRight"
-            data-delay=".8s" id="submitBtn" name="submit-form">
-            <span>Contact Us<i class="fa fa-spinner fa-spin" id="submitSpin"
-                style="display:none;"></i></span></button>
+          <button type="submit" data-animation="fadeInRight" data-delay=".8s" id="submitBtn" name="submit-form">
+            <span>Contact Us<i class="fa fa-spinner fa-spin" id="submitSpin" style="display:none;"></i></span></button>
         </div>
       </form>
     </div>
@@ -129,7 +127,7 @@
         </div>
       </div>
       <form id="submitForm1" method="POST" action="{{ route('project.form') }}">
-      @csrf
+        @csrf
         <div class="project-right">
           <label for="name">Your Name</label>
           <div class="input-wrapper">
@@ -152,10 +150,9 @@
             <textarea id="message" name="msg" placeholder="write about the topic you want to discuss"></textarea>
           </div>
           <div class="project-button-container">
-            <button type="submit" class="project-button" data-animation="fadeInRight"
-              data-delay=".8s" id="submitBtn1" name="submit-form">
-              <span>Send<i class="fa fa-spinner fa-spin" id="submitSpin1"
-                  style="display:none;"></i></span></button>
+            <button type="submit" class="project-button" data-animation="fadeInRight" data-delay=".8s" id="submitBtn1"
+              name="submit-form">
+              <span>Send<i class="fa fa-spinner fa-spin" id="submitSpin1" style="display:none;"></i></span></button>
           </div>
         </div>
       </form>
@@ -163,98 +160,98 @@
   </div>
 
   @push('scripts')
-  <script>
-    $('#submitForm').submit(function(e) {
+    <script>
+      $('#submitForm').submit(function (e) {
 
-      e.preventDefault();
+        e.preventDefault();
 
-      $('#submitSpin').show();
-      $('#submitBtn').prop('disabled', true);
+        $('#submitSpin').show();
+        $('#submitBtn').prop('disabled', true);
 
-      $.ajax({
-        url: "{{ route('contact.submit') }}",
-        type: "POST",
-        data: $(this).serialize(),
+        $.ajax({
+          url: "{{ route('contact.submit') }}",
+          type: "POST",
+          data: $(this).serialize(),
 
-        success: function(response) {
+          success: function (response) {
 
-          $('#submitSpin').hide();
-          $('#submitBtn').prop('disabled', false);
+            $('#submitSpin').hide();
+            $('#submitBtn').prop('disabled', false);
 
-          if (response.status) {
-            toastr.success(response.message);
-            $('#submitForm')[0].reset();
-          } else {
-            toastr.error(response.message);
+            if (response.status) {
+              toastr.success(response.message);
+              $('#submitForm')[0].reset();
+            } else {
+              toastr.error(response.message);
+            }
+
+          },
+
+          error: function (xhr) {
+
+            $('#submitSpin').hide();
+            $('#submitBtn').prop('disabled', false);
+
+            if (xhr.status === 422) {
+              $.each(xhr.responseJSON.errors, function (key, value) {
+                toastr.error(value[0]);
+              });
+            } else {
+              toastr.error("Something went wrong");
+            }
+
           }
 
-        },
-
-        error: function(xhr) {
-
-          $('#submitSpin').hide();
-          $('#submitBtn').prop('disabled', false);
-
-          if (xhr.status === 422) {
-            $.each(xhr.responseJSON.errors, function(key, value) {
-              toastr.error(value[0]);
-            });
-          } else {
-            toastr.error("Something went wrong");
-          }
-
-        }
+        });
 
       });
 
-    });
 
 
+      $('#submitForm1').submit(function (e) {
 
-    $('#submitForm1').submit(function(e){
+        e.preventDefault();
 
-    e.preventDefault();
+        $('#submitSpin1').show();
+        $('#submitBtn1').prop('disabled', true);
 
-    $('#submitSpin1').show();
-    $('#submitBtn1').prop('disabled', true);
+        $.ajax({
+          url: $(this).attr('action'),
+          type: "POST",
+          data: $(this).serialize(),
 
-    $.ajax({
-        url: $(this).attr('action'),
-        type: "POST",
-        data: $(this).serialize(),
-
-        success:function(response){
+          success: function (response) {
 
             $('#submitSpin1').hide();
             $('#submitBtn1').prop('disabled', false);
 
-            if(response.status){
-                toastr.success(response.message);
-                $('#submitForm1')[0].reset();
-            }else{
-                toastr.error(response.message);
+            if (response.status) {
+              toastr.success(response.message);
+              $('#submitForm1')[0].reset();
+            } else {
+              toastr.error(response.message);
             }
 
-        },
+          },
 
-        error:function(xhr){
+          error: function (xhr) {
 
             $('#submitSpin1').hide();
             $('#submitBtn1').prop('disabled', false);
 
-            if(xhr.status === 422){
-                $.each(xhr.responseJSON.errors,function(key,value){
-                    toastr.error(value[0]);
-                });
-            }else{
-                toastr.error("Something went wrong");
+            if (xhr.status === 422) {
+              $.each(xhr.responseJSON.errors, function (key, value) {
+                toastr.error(value[0]);
+              });
+            } else {
+              toastr.error("Something went wrong");
             }
 
-        }
+          }
 
-    });
+        });
 
-});
-  </script>
+      });
+    </script>
   @endpush
 </x-guest-layout>

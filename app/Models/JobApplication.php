@@ -8,9 +8,14 @@ class JobApplication extends Model
 {
     protected $fillable = [
         'career_id',
-        'name',
+        'first_name',
+        'last_name',
         'email',
+        'education',
+        'experience',
         'phone',
+        'state',
+        'district',
         'resume',
         'message',
         'status'

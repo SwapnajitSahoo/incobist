@@ -16,12 +16,17 @@ class JobApplicationController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'career_id' => 'required|exists:careers,id',
-            'name'      => 'required|string|max:255',
-            'email'     => 'required|email|max:255',
-            'phone'     => 'nullable|string|max:20',
-            'resume'    => 'required|file|mimes:pdf,doc,docx|max:5120', // Max 5MB
-            'message'   => 'nullable|string',
+            'career_id'  => 'required|exists:careers,id',
+            'first_name' => 'required|string|max:255',
+            'last_name'  => 'required|string|max:255',
+            'email'      => 'required|email|max:255',
+            'education'  => 'required|string|max:255',
+            'experience' => 'required|string|max:255',
+            'phone'      => 'required|string|max:20',
+            'state'      => 'required|string|max:255',
+            'district'   => 'required|string|max:255',
+            'resume'     => 'required|file|mimes:pdf,doc,docx,jpg,png|max:5120', // Max 5MB
+            'message'    => 'nullable|string',
         ]);
 
         if ($request->hasFile('resume')) {
@@ -38,11 +43,28 @@ class JobApplicationController extends Controller
     /**
      * Display a listing of applications for admin.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $applications = JobApplication::with('career')->latest()->get();
-        // dd($applications);
-        return view('admin.job_applications.index', compact('applications'));
+        $query = JobApplication::with('career');
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('first_name', 'like', "%{$search}%")
+                  ->orWhere('last_name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%")
+                  ->orWhere('phone', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('career_id')) {
+            $query->where('career_id', $request->career_id);
+        }
+
+        $applications = $query->latest()->paginate(10);
+        $careers = Career::all();
+        
+        return view('admin.job_applications.index', compact('applications', 'careers'));
     }
 
     /**

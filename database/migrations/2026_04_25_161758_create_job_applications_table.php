@@ -14,9 +14,14 @@ return new class extends Migration
         Schema::create('job_applications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('career_id')->constrained()->onDelete('cascade');
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email');
-            $table->string('phone')->nullable();
+            $table->string('phone');
+            $table->string('education');
+            $table->string('experience');
+            $table->string('state');
+            $table->string('district');
             $table->string('resume'); // file path
             $table->text('message')->nullable();
             $table->string('status')->default('pending'); // pending, reviewed, accepted, rejected

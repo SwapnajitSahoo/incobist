@@ -24,6 +24,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/experience', 'experience')->name('experience');
     Route::get('/company', 'company')->name('company');
     Route::get('/career', 'career')->name('career');
+    Route::get('/career/{id}', 'careerDetails')->name('career.details');
+    Route::get('/career/{id}/apply', 'careerApply')->name('career.apply');
     Route::get('/about', 'about')->name('about');
     Route::get('/services', 'services')->name('services');
     Route::get('/gallery', 'gallery')->name('gallery');
